@@ -22,7 +22,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://foodzat.netlify.app/">
+      <Link color="inherit" href="http://localhost:5173/">
         Your Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -202,6 +202,8 @@ export default function SignUp() {
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
+      
     </ThemeProvider>
+    
   );
 }

@@ -1,0 +1,18 @@
+.navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .navbar-header {
+    position: relative;
+  }
+  
+
+.Item {
+    position: absolute;
+    left: 100%;
+    transform: translateX(880%);
+    display: inline-block;
+    cursor: pointer;
+  }

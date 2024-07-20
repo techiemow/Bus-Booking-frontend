@@ -5,6 +5,8 @@ import {
 
   } from "@mui/material";
   import { useNavigate } from "react-router-dom";
+
+  import "./Navbar.css"
 const Navbar = () => {
     const [openType, setOpenType] = useState("");
 
@@ -18,20 +20,21 @@ const Navbar = () => {
       };
 
   return (
+    
     <AppBar >
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
+  <div class="container-fluid navbar-header">
     <a class="navbar-brand" href="#">Busvoyage</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
    
-      <form class="d-flex" role="search">
+      <form class="d-flex " role="search">
       { ! username ? (
                <>
                     <Button
-                  className="Item m-2 mx-5"
+                  className="Item m-2 mx-1"
                   variant="outlined"
                   size="medium"
                   onClick={() => {
@@ -43,7 +46,7 @@ const Navbar = () => {
                 </Button>
      
                 <Button
-                  className="Item m-2 mx-5"
+                  className="Item m-2 "
                   variant="outlined"
                   size="medium"
                   onClick={() => {
@@ -57,12 +60,12 @@ const Navbar = () => {
 
             ) : (
               <>
-              <Button  className='Item m-2 mx-5' variant="contained" color="primary"
+              <Button  className='Item m-2 mx-1' variant="contained" color="primary"
               >
               MyBookings
               </Button>
 
-                    <Button  className='Item m-2 mx-5' variant="contained" color="primary"
+                    <Button  className='Item m-2 mx-1' variant="contained" color="primary"
                     onClick={()=>{
                       handleLogout();
                     }}>
