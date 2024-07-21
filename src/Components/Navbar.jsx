@@ -21,8 +21,8 @@ const Navbar = () => {
 
   return (
     
-    <AppBar >
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <AppBar className='p-1'>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-3">
   <div class="container-fluid navbar-header">
     <a class="navbar-brand" href="#">Busvoyage</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

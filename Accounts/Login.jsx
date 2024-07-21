@@ -92,7 +92,9 @@ const Login = () => {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <span className="material-symbols-outlined">restaurant</span>
+          <span class="material-symbols-outlined">
+departure_board
+</span>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -138,7 +140,7 @@ const Login = () => {
                   variant="contained"
                   color="primary"
                   sx={{ mt: 3, mb: 2 }}
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !remember}
                 >
                   Sign In
                 </Button>
