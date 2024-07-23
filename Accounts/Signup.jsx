@@ -16,6 +16,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
 import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { apiurl } from '../Constants/apiurl';
 
 function Copyright(props) {

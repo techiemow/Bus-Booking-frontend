@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -8,7 +8,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -17,6 +16,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import { apiurl } from '../Constants/apiurl';
+import ToastContext from '../Notification/ToastContext';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 function Copyright(props) {
@@ -34,21 +37,18 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-
-
-
-
 const Login = () => {
   const initialValues = {
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   };
 
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
+  const { showToast } = useContext(ToastContext);
 
   const validationSchema = Yup.object({
-    username: Yup.string().required("Username is required"),
-    password: Yup.string().required("Password is required"),
+    username: Yup.string().required('Username is required'),
+    password: Yup.string().required('Password is required'),
   });
 
   const [remember, setRemember] = useState(false);
@@ -58,22 +58,16 @@ const Login = () => {
 
     try {
       const apiResponse = await axios.get(`${apiurl}/Login/${username}/${password}`);
-
-
-    
-      console.log(apiResponse.data);
       if (apiResponse.data) {
         localStorage.setItem('login', apiResponse.data.username);
-        localStorage.setItem("usertoken", apiResponse.data.token);
+        localStorage.setItem('usertoken', apiResponse.data.token);
+        showToast('Logged in successfully!');
         navigate('/');
-        // Add any additional logic after successful login here
-        
       } else {
-        alert("Login Failed: " + apiResponse.data.error);
+        showToast(`Login Failed: ${apiResponse.data.error}`);
       }
     } catch (error) {
-      console.error("Login error:", error);
-      alert("Login Failed");
+      showToast('Login Failed');
     }
 
     setSubmitting(false);
@@ -81,7 +75,7 @@ const Login = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh', marginLeft: "500px" }}>
+      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh', marginLeft: '500px' }}>
         <CssBaseline />
         <Box
           sx={{
@@ -92,9 +86,9 @@ const Login = () => {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <span class="material-symbols-outlined">
-departure_board
-</span>
+            <span className="material-symbols-outlined">
+              departure_board
+            </span>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in

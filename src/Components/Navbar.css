@@ -9,11 +9,7 @@
   position: relative;
 } 
 
- .Item {
-  position: absolute;
-  left: 100%;
-  transform: translateX(808%);
-  display:block;
+.Item {
   cursor: pointer;
 }
 
