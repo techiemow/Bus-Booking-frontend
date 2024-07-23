@@ -14,8 +14,8 @@ const Navbar = () => {
     };
 
     return (
-        <AppBar className='p-1'>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary px-3">
+        <AppBar className=' p-1'>
+            <nav className="navbar navigation navbar-expand-lg bg-body-tertiary px-3">
                 <div className="container-fluid navbar-header">
                     <a className="navbar-brand" href="#">Busvoyage</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -4,13 +4,18 @@
   right: 20%;
   transform: translateX(-0%);
 }
-
+.navigation{
+  box-shadow: 0px 2px 4px 0px rgba(0,0,0, 0.4);
+   
+  background: linear-gradient(90deg, #ddffef, #dea3a3);
+}
 .navbar-header {
   position: relative;
 } 
-
 .Item {
+
   cursor: pointer;
+
 }
 
 @media screen and (max-width: 600px) {
