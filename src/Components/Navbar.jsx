@@ -14,7 +14,7 @@ const Navbar = () => {
     };
 
     return (
-        <AppBar className=' py-1'>
+        <AppBar className='py-1'>
             <nav className="navbar navigation navbar-expand-lg bg-body-tertiary px-3">
                 <div className="container-fluid navbar-header">
                     <a className="navbar-brand" href="#">Busvoyage</a>

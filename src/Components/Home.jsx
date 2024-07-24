@@ -12,6 +12,7 @@ const HomeContainer = styled.div`
   background-color: #f5f5f5;
   font-size: 2rem;
   background: linear-gradient(90deg, #a54ee3bf, #4cb5bd , #dea3a3);
+  margin-bottom: 1rem;
 `;
 
 const Home = () => {

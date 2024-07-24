@@ -9,17 +9,22 @@ import Home from './Components/Home';
 import { ToastContainer } from 'react-toastify';
 import './App.css'; // Add this line for global styles
 import Buses from './Components/Buses';
+import { BusProvider } from './Context/BusContext';
+
+
 
 const Fullpage = () => {
   return (
-    <div className="app-container">
-      <Navbar />
-      <Home />
-      <Buses />
-      <ToastContainer />
-    </div>
+    <BusProvider>
+      <div className="app-container">
+        <Navbar />
+        <Home />
+        <Buses />
+        <ToastContainer />
+      </div>
+    </BusProvider>
   );
-}
+};
 
 function App() {
   return (

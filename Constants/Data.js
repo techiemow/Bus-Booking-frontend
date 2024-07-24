@@ -1,4 +1,4 @@
-export const Buses = [
+export const BusesDetails = [
     {
       id: 1,
       name: "Chennai Express",
@@ -7,7 +7,7 @@ export const Buses = [
       departureTime: "06:00 AM",
       arrivalTime: "12:30 PM",
       price: "₹600",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -36,7 +36,7 @@ export const Buses = [
       departureTime: "07:30 AM",
       arrivalTime: "02:00 PM",
       price: "₹550",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+    
       busType: "Seater",
       numberOfSeats: 60,
       seatLayout: {
@@ -72,7 +72,7 @@ export const Buses = [
       departureTime: "09:15 AM",
       arrivalTime: "03:45 PM",
       price: "₹700",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+   
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -101,7 +101,7 @@ export const Buses = [
       departureTime: "11:00 AM",
       arrivalTime: "05:30 PM",
       price: "₹650",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+  
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -124,7 +124,7 @@ export const Buses = [
       departureTime: "08:45 AM",
       arrivalTime: "03:15 PM",
       price: "₹580",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+      
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -153,7 +153,7 @@ export const Buses = [
       departureTime: "08:00 AM",
       arrivalTime: "02:30 PM",
       price: "₹600",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+ 
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -182,7 +182,7 @@ export const Buses = [
       departureTime: "09:30 AM",
       arrivalTime: "04:00 PM",
       price: "₹550",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+ 
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -205,7 +205,7 @@ export const Buses = [
       departureTime: "11:15 AM",
       arrivalTime: "05:45 PM",
       price: "₹700",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -233,8 +233,8 @@ export const Buses = [
       destination: "Bangalore",
       departureTime: "01:00 PM",
       arrivalTime: "07:30 PM",
-      price: "₹650",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+      price: "₹2000",
+   
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -256,8 +256,8 @@ export const Buses = [
       destination: "Chennai",
       departureTime: "08:45 AM",
       arrivalTime: "03:15 PM",
-      price: "₹580",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+      price: "₹5000",
+ 
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -285,8 +285,8 @@ export const Buses = [
       destination: "Mumbai",
       departureTime: "08:30 AM",
       arrivalTime: "03:00 PM",
-      price: "₹600",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+      price: "₹4000",
+    
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -315,7 +315,7 @@ export const Buses = [
       departureTime: "10:00 AM",
       arrivalTime: "04:30 PM",
       price: "₹550",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+      
       busType: "Seater",
       numberOfSeats: 60,
       seatLayout: {
@@ -351,7 +351,7 @@ export const Buses = [
       departureTime: "12:15 PM",
       arrivalTime: "05:45 PM",
       price: "₹700",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+      
       busType: "Seater",
       numberOfSeats: 60,
       seatLayout: {
@@ -386,8 +386,8 @@ export const Buses = [
       destination: "Bangalore",
       departureTime: "02:00 PM",
       arrivalTime: "07:30 PM",
-      price: "₹650",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+      price: "₹1500",
+      
       busType: "Seater",
       numberOfSeats: 60,
       seatLayout: {
@@ -417,13 +417,13 @@ export const Buses = [
     },
     {
       id: 45,
-      name: "Salem Speedster",
-      source: "Salem",
+      name: "Delhi Speedster",
+      source: "Delhi",
       destination: "Chennai",
       departureTime: "09:15 AM",
       arrivalTime: "03:45 PM",
       price: "₹580",
-      availableDates: ["2023-10-15", "2023-10-16", "2023-10-17", "2023-10-18"],
+
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
