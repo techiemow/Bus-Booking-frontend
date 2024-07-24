@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import './App.css'; // Add this line for global styles
 import Buses from './Components/Buses';
 import { BusProvider } from './Context/BusContext';
+import Layout from './Components/Layout';
 
 
 
@@ -27,11 +28,15 @@ const Fullpage = () => {
 };
 
 function App() {
+  
+  const [selectedSeats , setselectedSeats] = useState([]); 
+
   return (
     <ToastProvider>
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login />} />
+          <Route path= "/Layout/:id" element= {<Layout  selectedSeats={selectedSeats} setselectedSeats={setselectedSeats}/>} />
           <Route path='/register' element={<SignUp />} />
           <Route path='*' element={<Fullpage />} />
         </Routes>
