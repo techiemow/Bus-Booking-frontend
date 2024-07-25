@@ -47,8 +47,8 @@ const Seatlist = styled.li`
 const Layout = ({ selectedSeats, setselectedSeats }) => {
   const navigate = useNavigate();
   const { id } = useParams();
-
-  const selectedbus = BusesDetails.find((data) => data.id === parseInt(id));
+  const Id = parseInt(id)
+  const selectedbus = BusesDetails.find((data) => data.id === Id);
   const isSeater = selectedbus.busType === 'Seater';
   const seatwidth = isSeater ? '30px' : '80px';
 
@@ -162,7 +162,7 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
             color="success"
             className="mb-5"
             style={{ fontFamily: "monospace" }}
-            onClick={() => navigate(`/Layout/Booking`)} 
+            onClick={() => navigate(`/Layout/Booking/${Id}`)} 
             disabled={selectedSeats.length === 0}
           >
             Book Now

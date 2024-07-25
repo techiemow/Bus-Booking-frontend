@@ -54,7 +54,7 @@ export const BusList = ({ selectedBus }) => {
               style={{ fontFamily: "monospace" }}
               onClick={() => navigate(`/Layout/${bus.id}`)}  
             >
-              Book Now
+              View Seats
             </Button>
             <h5 style={{ textAlign: "center" }}>Available Seats: {bus.availableSeats.length}</h5>
           </div>

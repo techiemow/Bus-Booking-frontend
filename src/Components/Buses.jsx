@@ -1,18 +1,18 @@
-import { Autocomplete, Button, TextField } from '@mui/material';
-import React, { useContext, useState } from 'react';
-import { BusesDetails, locations } from '../../Constants/Data';
+import React, { useEffect, useContext, useState } from 'react';
+import { BusContext } from '../Context/BusContext';
+import { Autocomplete, TextField, Button } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import dayjs from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { BusContext } from '../Context/BusContext';
+import { BusesDetails, locations } from '../../Constants/Data';
 import { BusList } from './BusList';
 
 const Buses = () => {
   const { searchDetails, setSearchDetails } = useContext(BusContext);
-  const [selectedBus, setSelectedBus] = useState(null);
+  const [selectedBus, setSelectedBus] = useState([]);
   const [error, setError] = useState('');
 
   const handleExchange = () => {
@@ -45,14 +45,22 @@ const Buses = () => {
     setSearchDetails(prevDetails => ({ ...prevDetails, date: newValue }));
   };
 
+  useEffect(() => {
+    console.log('Search Details:', searchDetails);
+  }, [searchDetails]);
+
   const handleSearch = () => {
-    setSelectedBus(
-      BusesDetails.filter(
-        (bus) =>
-          bus.source === searchDetails.from &&
-          bus.destination === searchDetails.to
-      )
-    );
+    if (searchDetails.from && searchDetails.to && searchDetails.date) {
+      setSelectedBus(
+        BusesDetails.filter(
+          (bus) =>
+            bus.source === searchDetails.from &&
+            bus.destination === searchDetails.to
+        )
+      );
+    } else {
+      console.error('Please fill all search details.');
+    }
   };
 
   return (
@@ -71,7 +79,7 @@ const Buses = () => {
           onClick={handleExchange}
           style={{ margin: '0 10px', padding: '10px', cursor: 'pointer', backgroundColor: '#1976d2', color: '#fff', border: 'none', borderRadius: '4px' }}
         >
-        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          <i className="fa-solid fa-arrow-right-arrow-left"></i>
         </button>
         <Autocomplete
           disablePortal

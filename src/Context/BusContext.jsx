@@ -5,11 +5,10 @@ export const BusContext = createContext();
 
 export const BusProvider = ({ children }) => {
   const [searchDetails, setSearchDetails] = useState({
-    from: '',
-    to: '',
+    from:'',
+    to:'',
     date: dayjs(),
-    time: '',
-    seats: 0,
+
   });
 
   return (
