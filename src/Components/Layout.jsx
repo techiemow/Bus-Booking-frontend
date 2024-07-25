@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { BusesDetails } from '../../Constants/Data';
@@ -47,10 +47,17 @@ const Seatlist = styled.li`
 const Layout = ({ selectedSeats, setselectedSeats }) => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const Id = parseInt(id)
+  const Id = parseInt(id);
   const selectedbus = BusesDetails.find((data) => data.id === Id);
   const isSeater = selectedbus.busType === 'Seater';
   const seatwidth = isSeater ? '30px' : '80px';
+  const seatPrice = parseInt(selectedbus.price.replace('₹', ''));
+
+  useEffect(() => {
+    if (!localStorage.getItem('login')) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
   const isAvailable = (seat) => selectedbus.availableSeats.includes(seat);
 
@@ -153,20 +160,13 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
         </ul>
         <div className='d-flex justify-content-center'>
           {selectedSeats.length > 0 && (
-            <h4>Selected Seats - {selectedSeats.join(", ")}</h4>
+            <Button
+              variant='contained'
+              onClick={() => navigate(`/Layout/Booking/${id}`)}
+            >
+              Book Now - {seatPrice * selectedSeats.length}₹
+            </Button>
           )}
-        </div>
-        <div>
-          <Button
-            variant="contained"
-            color="success"
-            className="mb-5"
-            style={{ fontFamily: "monospace" }}
-            onClick={() => navigate(`/Layout/Booking/${Id}`)} 
-            disabled={selectedSeats.length === 0}
-          >
-            Book Now
-          </Button>
         </div>
       </Container>
     </React.Fragment>

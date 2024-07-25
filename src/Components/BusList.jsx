@@ -56,7 +56,7 @@ export const BusList = ({ selectedBus }) => {
             >
               View Seats
             </Button>
-            <h5 style={{ textAlign: "center" }}>Available Seats: {bus.availableSeats.length}</h5>
+           
           </div>
         </BusItem>
       ))}

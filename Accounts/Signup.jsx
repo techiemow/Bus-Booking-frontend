@@ -17,7 +17,7 @@ import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-
+import "./Signup.css"
 import { apiurl } from '../Constants/apiurl';
 
 function Copyright(props) {
@@ -86,7 +86,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh', marginLeft: '500px' }}>
+      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems:"center", marginLeft: '500px' }}>
         <CssBaseline />
         <Box
           sx={{

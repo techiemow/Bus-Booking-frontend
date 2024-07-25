@@ -18,7 +18,7 @@ import axios from 'axios';
 import { apiurl } from '../Constants/apiurl';
 import ToastContext from '../Notification/ToastContext';
 import 'react-toastify/dist/ReactToastify.css';
-
+import "./Login.css"
 
 
 
@@ -75,7 +75,7 @@ const Login = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '100vh', marginLeft: '500px' }}>
+      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems:"center",marginLeft: '500px' }}>
         <CssBaseline />
         <Box
           sx={{

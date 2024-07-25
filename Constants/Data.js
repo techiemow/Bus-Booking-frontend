@@ -6,7 +6,7 @@ export const BusesDetails = [
       destination: "Mumbai",
       departureTime: "06:00 AM",
       arrivalTime: "12:30 PM",
-      price: "₹600",
+      price: "600",
 
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -35,7 +35,7 @@ export const BusesDetails = [
       destination: "Chennai",
       departureTime: "07:30 AM",
       arrivalTime: "02:00 PM",
-      price: "₹550",
+      price: "550",
     
       busType: "Seater",
       numberOfSeats: 60,
@@ -71,7 +71,7 @@ export const BusesDetails = [
       destination: "Coimbatore",
       departureTime: "09:15 AM",
       arrivalTime: "03:45 PM",
-      price: "₹700",
+      price: "700",
    
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -100,7 +100,7 @@ export const BusesDetails = [
       destination: "Bangalore",
       departureTime: "11:00 AM",
       arrivalTime: "05:30 PM",
-      price: "₹650",
+      price: "650",
   
       busType: "Seater",
       numberOfSeats: 48,
@@ -123,7 +123,7 @@ export const BusesDetails = [
       destination: "Chennai",
       departureTime: "08:45 AM",
       arrivalTime: "03:15 PM",
-      price: "₹580",
+      price: "580",
       
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -152,7 +152,7 @@ export const BusesDetails = [
       destination: "Mumbai",
       departureTime: "08:00 AM",
       arrivalTime: "02:30 PM",
-      price: "₹600",
+      price: "600",
  
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -181,7 +181,7 @@ export const BusesDetails = [
       destination: "Chennai",
       departureTime: "09:30 AM",
       arrivalTime: "04:00 PM",
-      price: "₹550",
+      price: "550",
  
       busType: "Seater",
       numberOfSeats: 48,
@@ -204,7 +204,7 @@ export const BusesDetails = [
       destination: "Coimbatore",
       departureTime: "11:15 AM",
       arrivalTime: "05:45 PM",
-      price: "₹700",
+      price: "700",
 
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -233,7 +233,7 @@ export const BusesDetails = [
       destination: "Bangalore",
       departureTime: "01:00 PM",
       arrivalTime: "07:30 PM",
-      price: "₹2000",
+      price: "2000",
    
       busType: "Seater",
       numberOfSeats: 48,
@@ -256,7 +256,7 @@ export const BusesDetails = [
       destination: "Chennai",
       departureTime: "08:45 AM",
       arrivalTime: "03:15 PM",
-      price: "₹5000",
+      price: "5000",
  
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -285,7 +285,7 @@ export const BusesDetails = [
       destination: "Mumbai",
       departureTime: "08:30 AM",
       arrivalTime: "03:00 PM",
-      price: "₹4000",
+      price: "4000",
     
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -314,7 +314,7 @@ export const BusesDetails = [
       destination: "Chennai",
       departureTime: "10:00 AM",
       arrivalTime: "04:30 PM",
-      price: "₹550",
+      price: "550",
       
       busType: "Seater",
       numberOfSeats: 60,
@@ -350,7 +350,7 @@ export const BusesDetails = [
       destination: "Coimbatore",
       departureTime: "12:15 PM",
       arrivalTime: "05:45 PM",
-      price: "₹700",
+      price: "700",
       
       busType: "Seater",
       numberOfSeats: 60,
@@ -386,7 +386,7 @@ export const BusesDetails = [
       destination: "Bangalore",
       departureTime: "02:00 PM",
       arrivalTime: "07:30 PM",
-      price: "₹1500",
+      price: "1500",
       
       busType: "Seater",
       numberOfSeats: 60,
@@ -422,7 +422,7 @@ export const BusesDetails = [
       destination: "Chennai",
       departureTime: "09:15 AM",
       arrivalTime: "03:45 PM",
-      price: "₹580",
+      price: "580",
 
       busType: "Seater",
       numberOfSeats: 48,

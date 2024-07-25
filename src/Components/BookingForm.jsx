@@ -1,14 +1,31 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { BusContext } from '../Context/BusContext';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import dayjs from 'dayjs';
+import axios from 'axios';  // Import axios
+import { BusesDetails } from '../../Constants/Data';
+import { apiurl } from '../../Constants/apiurl';
 
 const BookingForm = ({ selectedSeats }) => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const { searchDetails } = useContext(BusContext);
-  console.log(searchDetails);
+  const Id = parseInt(id);
+console.log(Id)
+  const selectedbus = BusesDetails.find((data) => data.id === Id);
+  console.log(selectedbus);
+  if (!selectedbus) {
+    return <div>Error: Bus not found</div>;
+  }
+
+  if (!localStorage.getItem('login')) {
+    return <div>Please log in to book seats.</div>;
+  }
+
+  const seatPrice = parseInt(selectedbus.price);
+
   const initialValues = {
     passengers: selectedSeats.map(() => ({ Name: '', PhoneNumber: '' })),
   };
@@ -24,9 +41,25 @@ const BookingForm = ({ selectedSeats }) => {
     ),
   });
 
-  const handleSubmit = (values) => {
-    console.log('Booking Details:', values);
-    alert("Booking successfully");
+  const handleSubmit = async (values) => {
+    const totalPrice = selectedSeats.length * seatPrice;
+    const bookingDetails = {
+      passengerName: values.passengers.map(p => p.Name),
+      busType: selectedbus.busType,
+      departureTime: selectedbus.departureTime,
+      From: searchDetails.from,
+      To: searchDetails.to,
+      numberOfSeats: selectedSeats,
+      totalPrice
+    };
+    
+    try {
+      await axios.post(`${apiurl}/bookings`, bookingDetails);
+      alert("Booking successfully");
+      navigate('/');
+    } catch (error) {
+      console.error('There was an error creating the booking!', error);
+    }
   };
 
   return (
@@ -41,7 +74,7 @@ const BookingForm = ({ selectedSeats }) => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form >
+        <Form>
           {selectedSeats.map((seatNo, index) => (
             <div key={index}>
               <div className='my-3'>Seat Number: {seatNo}</div>
