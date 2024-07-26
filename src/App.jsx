@@ -29,6 +29,7 @@ const Fullpage = () => {
 
 function App() {
   const [selectedSeats, setselectedSeats] = useState([]);
+  
 
   return (
     <ToastProvider>
@@ -45,7 +46,7 @@ function App() {
             />
             <Route
               path='/Layout/Booking/:id'
-              element={<BookingForm selectedSeats={selectedSeats} />}
+              element={<BookingForm selectedSeats={selectedSeats} setSelectedSeats={setselectedSeats} />}
             />
           </Route>
         </Routes>

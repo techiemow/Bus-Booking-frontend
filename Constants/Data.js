@@ -1,13 +1,12 @@
 export const BusesDetails = [
     {
-      id: 1,
+      id:130978,
       name: "Chennai Express",
       source: "Chennai",
       destination: "Mumbai",
       departureTime: "06:00 AM",
       arrivalTime: "12:30 PM",
-      price: "600",
-
+      price: "2500",
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -26,10 +25,11 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      availableSeats: ["U19", "U24", "U30", "L4", "L16", "L6"],
+      bookedSeatsByDate: {},
+      bookedSeats: [19, 24, 30, 4, 16, 6],
     },
     {
-      id: 2,
+      id: 298728,
       name: "Coimbatore Comfort",
       source: "Coimbatore",
       destination: "Chennai",
@@ -49,30 +49,16 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
           [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
         ],
-      },
-      availableSeats: [
-        "1",
-        "2",
-        "3",
-        "5",
-        "7",
-        "13",
-        "15",
-        "30",
-        "35",
-        "60",
-        "59",
-      ],
+      }
     },
     {
-      id: 3,
+      id: 390642,
       name: "NueGo Travels",
       source: "Bangalore",
       destination: "Coimbatore",
       departureTime: "09:15 AM",
       arrivalTime: "03:45 PM",
       price: "700",
-   
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -90,18 +76,17 @@ export const BusesDetails = [
           ],
           second: [31, 32, 33, 34, 35, 36],
         },
-      },
-      availableSeats: ["U19", "U24", "U30", "L4", "L16", "L6"],
+      }
     },
     {
-      id: 4,
+      id: 478543,
       name: "Mumbai Magic",
       source: "Mumbai",
       destination: "Bangalore",
       departureTime: "11:00 AM",
       arrivalTime: "05:30 PM",
-      price: "650",
-  
+      price: "850",
+    
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -113,8 +98,7 @@ export const BusesDetails = [
           [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
-      },
-      availableSeats: ["2", "5", "6", "1", "3", "7", "4"],
+      }
     },
     {
       id: 5,
@@ -123,7 +107,7 @@ export const BusesDetails = [
       destination: "Chennai",
       departureTime: "08:45 AM",
       arrivalTime: "03:15 PM",
-      price: "580",
+      price: "1999",
       
       busType: "Sleeper",
       numberOfSeats: 36,
@@ -142,8 +126,7 @@ export const BusesDetails = [
           ],
           second: [31, 32, 33, 34, 35, 36],
         },
-      },
-      availableSeats: ["U19", "U24", "U30", "L4", "L16", "L6"],
+      }
     },
     {
       id: 31,
@@ -172,7 +155,8 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      availableSeats: ["U19", "U24", "U30", "L4", "L16", "L6"],
+      bookedSeats: [19, 24, 30, 4, 16, 6],
+      bookedSeatsByDate: {},
     },
     {
       id: 32,
@@ -195,7 +179,8 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      availableSeats: ["2", "5", "6", "1", "3", "7", "4"],
+      bookedSeats: [4,28, 33,17,9,37],
+      bookedSeatsByDate: {},
     },
     {
       id: 33,
@@ -224,7 +209,8 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      availableSeats: ["U19", "U24", "U30", "L4", "L16", "L6"],
+      bookedSeats: [19, 24, 30, 4, 16, 6],
+      bookedSeatsByDate: {},
     },
     {
       id: 34,
@@ -247,7 +233,8 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      availableSeats: ["2", "5", "6", "1", "3", "7", "4"],
+      bookedSeats: [19, 24, 30, 4, 16, 6],
+      bookedSeatsByDate: {},
     },
     {
       id: 35,
@@ -276,7 +263,8 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      availableSeats: ["U19", "U24", "U30", "L4", "L16", "L6"],
+      bookedSeats:[19, 24, 30, 4, 16, 6],
+      bookedSeatsByDate: {},
     },
     {
       id: 41,
@@ -305,7 +293,8 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      availableSeats: ["U19", "U24", "U30", "L4", "L16", "L6"],
+      bookedSeats: [19, 24, 30, 4, 16, 6],
+      bookedSeatsByDate: {},
     },
     {
       id: 42,
@@ -329,19 +318,10 @@ export const BusesDetails = [
           [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
         ],
       },
-      availableSeats: [
-        "1",
-        "2",
-        "3",
-        "5",
-        "7",
-        "13",
-        "15",
-        "30",
-        "35",
-        "60",
-        "59",
+      bookedSeats: [
+        46,33, 21,7,10,57,60
       ],
+      bookedSeatsByDate: {},
     },
     {
       id: 43,
@@ -365,19 +345,10 @@ export const BusesDetails = [
           [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
         ],
       },
-      availableSeats: [
-        "1",
-        "2",
-        "3",
-        "5",
-        "7",
-        "13",
-        "15",
-        "30",
-        "35",
-        "60",
-        "59",
+      bookedSeats: [
+     46,33, 21,7,10,57,60
       ],
+      bookedSeatsByDate: {},
     },
     {
       id: 44,
@@ -401,19 +372,10 @@ export const BusesDetails = [
           [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
         ],
       },
-      availableSeats: [
-        "1",
-        "2",
-        "3",
-        "5",
-        "7",
-        "13",
-        "15",
-        "30",
-        "35",
-        "60",
-        "59",
+      bookedSeats: [
+        46,33, 21,7,10,57,60
       ],
+      bookedSeatsByDate: {},
     },
     {
       id: 45,
@@ -436,7 +398,8 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      availableSeats: ["2", "5", "6", "1", "3", "7", "4"],
+      bookedSeats: [19, 24, 30, 4, 16, 6],
+      bookedSeatsByDate: {},
     },
   ];
   export const locations = [

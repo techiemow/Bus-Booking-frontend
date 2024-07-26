@@ -3,6 +3,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { BusesDetails } from '../../Constants/Data';
 import { Button } from '@mui/material';
+import dayjs from 'dayjs';
+import { BusContext } from '../Context/BusContext';
+import axios from 'axios';
+import { apiurl } from '../../Constants/apiurl';
 
 const Header = styled.h1`
   display: flex;
@@ -47,11 +51,19 @@ const Seatlist = styled.li`
 const Layout = ({ selectedSeats, setselectedSeats }) => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [bookedSeats, setBookedSeats] = useState([]);
+  
   const Id = parseInt(id);
-  const selectedbus = BusesDetails.find((data) => data.id === Id);
-  const isSeater = selectedbus.busType === 'Seater';
-  const seatwidth = isSeater ? '30px' : '80px';
-  const seatPrice = parseInt(selectedbus.price.replace('₹', ''));
+  const selectedBus = BusesDetails.find((data) => data.id === Id);
+  const { searchDetails } = useContext(BusContext);
+  
+  if (!selectedBus) {
+    return <div>Bus not found</div>;
+  }
+
+  const isSeater = selectedBus.busType === 'Seater';
+  const seatWidth = isSeater ? '30px' : '80px';
+  const seatPrice = parseInt(selectedBus.price);
 
   useEffect(() => {
     if (!localStorage.getItem('login')) {
@@ -59,17 +71,38 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
     }
   }, [navigate]);
 
-  const isAvailable = (seat) => selectedbus.availableSeats.includes(seat);
+  const fetchSeatAvailability = async () => {
+    try {
+      const username = localStorage.getItem('login');
 
-  const seatselection = (seat) => {
-    setselectedSeats((prevState) =>
-      prevState.includes(seat)
-        ? prevState.filter((selectedSeat) => selectedSeat !== seat)
-        : [...prevState, seat]
-    );
+      const selectedDate = dayjs(searchDetails.date).format('YYYY-MM-DD')
+      const response = await axios.get(`${apiurl}/selection/${selectedDate}`);
+      setBookedSeats(response.data.map(booking => booking.numberOfSeats).flat());
+      console.log(response.data.map(booking => booking.numberOfSeats).flat());
+    } catch (error) {
+      console.error("Error fetching seat availability:", error);
+    }
+  };
+  
+
+  useEffect(() => {
+    fetchSeatAvailability();
+  }, [searchDetails]); // Fetch whenever date changes
+
+  const seatSelection = (seat) => {
+    if (!bookedSeats.includes(seat)) {
+      setselectedSeats((prevState) =>
+        prevState.includes(seat)
+          ? prevState.filter((selectedSeat) => selectedSeat !== seat)
+          : [...prevState, seat]
+      );
+    } else {
+      alert("Seat already booked");
+    }
   };
 
   const isSeatSelected = (seat) => selectedSeats.includes(seat);
+  const isSeatBooked = (seat) => bookedSeats.includes(seat);
 
   const generateSeats = (array, key = '') =>
     array.map((seats, index) =>
@@ -79,11 +112,15 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
             <Seatlist
               key={seat}
               style={{
-                width: seatwidth,
-                background: isSeatSelected(`${key}${seat}`) ? "#318beb" : isAvailable(`${key}${seat}`) ? '#fff' : '#b6b4b4',
-                cursor: isAvailable(`${key}${seat}`) ? 'pointer' : 'not-allowed',
+                width: seatWidth,
+                background: isSeatBooked(`${key}${seat}`)
+                  ? '#b6b4b4'
+                  : isSeatSelected(`${key}${seat}`)
+                  ? '#318beb'
+                  : '#fff',
+                cursor: isSeatBooked(`${key}${seat}`) ? 'not-allowed' : 'pointer',
               }}
-              onClick={() => isAvailable(`${key}${seat}`) && seatselection(`${key}${seat}`)}
+              onClick={() => seatSelection(`${key}${seat}`)}
             >
               {key}{seat}
             </Seatlist>
@@ -93,11 +130,15 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
         <Seatlist
           key={index}
           style={{
-            width: seatwidth,
-            background: isSeatSelected(`${key}${seats}`) ? "#318beb" : isAvailable(`${key}${seats}`) ? '#fff' : '#b6b4b4',
-            cursor: isAvailable(`${key}${seats}`) ? 'pointer' : 'not-allowed',
+            width: seatWidth,
+            background: isSeatBooked(`${key}${seats}`)
+              ? '#b6b4b4'
+              : isSeatSelected(`${key}${seats}`)
+              ? '#318beb'
+              : '#fff',
+            cursor: isSeatBooked(`${key}${seats}`) ? 'not-allowed' : 'pointer',
           }}
-          onClick={() => isAvailable(`${key}${seats}`) && seatselection(`${key}${seats}`)}
+          onClick={() => seatSelection(`${key}${seats}`)}
         >
           {key}{seats}
         </Seatlist>
@@ -108,30 +149,31 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
     <React.Fragment>
       <Header onClick={() => navigate('/')}>BusVoyage</Header>
       <Container>
-        <h2>{selectedbus.name}</h2>
-        <h5>{selectedbus.busType}</h5>
+        <h2>{selectedBus.name}</h2>
+        <h5>{selectedBus.busType}</h5>
         <div className="d-flex">
           <div className="d-flex ms-2 align-items-center">
             <h6>Seats Available</h6>
-            <Seatlist style={{ width: seatwidth }}>{1}</Seatlist>
+            <Seatlist style={{ width: seatWidth }}>{1}</Seatlist>
           </div>
           <div className="d-flex ms-2 align-items-center">
             <h6>Booked Seat</h6>
-            <Seatlist style={{ width: seatwidth, background: '#b6b4b4' }}>{1}</Seatlist>
+            <Seatlist style={{ width: seatWidth, background: '#b6b4b4' }}>{1}</Seatlist>
           </div>
           <div className="d-flex ms-2 align-items-center">
             <h6>Selected Seat</h6>
-            <Seatlist style={{ width: seatwidth, background: '#318beb' }}>{1}</Seatlist>
+            <Seatlist style={{ width: seatWidth, background: '#318beb' }}>{1}</Seatlist>
           </div>
         </div>
+        
         <ul className="d-flex flex-wrap">
           {isSeater ? (
             <SeatContainer className="d-flex align-items-center">
               <h6 className="p-3">Seater</h6>
               <div>
-                {generateSeats(selectedbus.seatLayout.first)}
+                {generateSeats(selectedBus.seatLayout.first)}
                 <div className="mt-4">
-                  {generateSeats(selectedbus.seatLayout.second)}
+                  {generateSeats(selectedBus.seatLayout.second)}
                 </div>
               </div>
             </SeatContainer>
@@ -140,18 +182,19 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
               <SeatContainer className="d-flex align-items-center">
                 <h6 className="p-3">Upper</h6>
                 <div className="d-flex flex-wrap">
-                  {generateSeats(selectedbus.seatLayout.upper.first, 'U')}
+                  {generateSeats(selectedBus.seatLayout.upper.first)}
                   <div className="d-flex mt-4 flex-wrap">
-                    {generateSeats(selectedbus.seatLayout.upper.second, 'U')}
+                    {generateSeats(selectedBus.seatLayout.upper.second)}
                   </div>
                 </div>
               </SeatContainer>
+              <hr /><hr />
               <SeatContainer className="d-flex align-items-center">
                 <h6 className="p-3">Lower</h6>
                 <div className="d-flex flex-wrap">
-                  {generateSeats(selectedbus.seatLayout.lower.first, 'L')}
+                  {generateSeats(selectedBus.seatLayout.lower.first)}
                   <div className="d-flex mt-4 flex-wrap">
-                    {generateSeats(selectedbus.seatLayout.lower.second, 'L')}
+                    {generateSeats(selectedBus.seatLayout.lower.second)}
                   </div>
                 </div>
               </SeatContainer>
@@ -159,14 +202,27 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
           )}
         </ul>
         <div className='d-flex justify-content-center'>
-          {selectedSeats.length > 0 && (
-            <Button
-              variant='contained'
-              onClick={() => navigate(`/Layout/Booking/${id}`)}
-            >
-              Book Now - {seatPrice * selectedSeats.length}₹
-            </Button>
+        {selectedSeats.length > 0 && (
+            <h4>Selected Seats - {selectedSeats.join(", ")}</h4>
           )}
+        </div>
+        <div className="text-center mt-5">
+        {selectedSeats.length > 0 && (
+          <h5>Total Price: {selectedSeats.length * seatPrice}</h5>
+        )}
+        </div>
+       
+        <div className='d-flex justify-content-center'>
+          <Button
+            variant="contained"
+            color="success"
+            className="mb-5 d-flex justify-content-center"
+            style={{ fontFamily: "monospace" }}
+            onClick={() => navigate(`/Layout/Booking/${id}`)} 
+            disabled={selectedSeats.length === 0}
+          >
+            Book Now
+          </Button>
         </div>
       </Container>
     </React.Fragment>
