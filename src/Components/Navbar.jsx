@@ -60,7 +60,7 @@ const Navbar = () => {
                 navigate('/MyAccount');
                 break;
             case 'My Bookings':
-                navigate('/myBookings');
+                navigate('/MyBookings');
                 break;
             case 'Logout':
                 localStorage.removeItem('login');

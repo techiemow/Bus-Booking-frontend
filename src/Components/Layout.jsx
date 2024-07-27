@@ -74,9 +74,11 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
   const fetchSeatAvailability = async () => {
     try {
       const username = localStorage.getItem('login');
-
+       const form = searchDetails.from;
+       const to = searchDetails.to;
       const selectedDate = dayjs(searchDetails.date).format('YYYY-MM-DD')
-      const response = await axios.get(`${apiurl}/selection/${selectedDate}`);
+      console.log(`${apiurl}/selection/${selectedDate}/${form}/${to}`)
+      const response = await axios.get(`${apiurl}/selection/${selectedDate}/${form}/${to}`);
       setBookedSeats(response.data.map(booking => booking.numberOfSeats).flat());
       console.log(response.data.map(booking => booking.numberOfSeats).flat());
     } catch (error) {

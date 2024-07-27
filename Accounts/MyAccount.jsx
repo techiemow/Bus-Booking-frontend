@@ -36,10 +36,14 @@ function Copyright(props) {
   );
 }
 
-const username = localStorage.getItem('login');
+
+
+
 const theme = createTheme();
 
 export default function MyAccount() {
+
+    const username = localStorage.getItem('login');
 
     const navigate = useNavigate();
   const [userData, setUserData] = useState({
@@ -56,7 +60,7 @@ export default function MyAccount() {
       console.log('User data:', response.data.user); // Debug log
       setUserData(response.data.user);
       setbookingCount(response.data.bookingCount);
-      if( response.data === null){
+      if( response.data.user === null){
         navigate("/")
       }
     } catch (error) {

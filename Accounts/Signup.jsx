@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
@@ -37,6 +37,8 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [terms, setTerms] = useState(false);
+
+  const navigate = useNavigate();
 
   const initialValues = {
     username: '',
@@ -190,6 +192,7 @@ departure_board
                   color="primary"
                   disabled={!terms || isSubmitting}
                   sx={{ mt: 3, mb: 2 }}
+                  onClick={() => navigate("/")}
                 >
                   Sign Up
                 </Button>

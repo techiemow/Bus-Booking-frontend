@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import axios from 'axios';
 import { BusesDetails } from '../../Constants/Data';
 import { apiurl } from '../../Constants/apiurl';
+import { Button } from '@mui/material';
 
 const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
   const { searchDetails } = useContext(BusContext);
   const Id = parseInt(id);
   const selectedBus = BusesDetails.find((data) => data.id === Id);
-console.log(selectedBus);
+  console.log(selectedBus);
 
 
   if (!selectedBus) {
@@ -26,19 +27,20 @@ console.log(selectedBus);
   }
 
   const seatPrice = parseInt(selectedBus.price);
- 
+
   console.log(selectedSeats);
   const initialValues = {
-    passengers: selectedSeats.map(() => ({ Name: '', PhoneNumber: '' })),
+    passengers: selectedSeats.map(() => ({ Name: '', Age: '' })),
   };
 
   const validationSchema = Yup.object({
     passengers: Yup.array().of(
       Yup.object({
         Name: Yup.string().required('Name is required'),
-        PhoneNumber: Yup.string()
-          .matches(/^\d+$/, 'Phone number must be digits only')
-          .required('Phone number is required'),
+        Age: Yup.number()
+        .positive('Age must be a positive number')
+        .integer('Age must be an integer')
+        .required('Age is required'),
       })
     ),
   });
@@ -56,37 +58,37 @@ console.log(selectedBus);
       totalPrice,
       date: dayjs(searchDetails.date).format('YYYY-MM-DD'), // Include date in booking details
     };
-  
+
     try {
       const selectedDate = dayjs(searchDetails.date).format('YYYY-MM-DD');
-      
+
       // Ensure bookedSeatsByDate exists
       if (!selectedBus.bookedSeatsByDate) {
         selectedBus.bookedSeatsByDate = {};
       }
-  
+
       // Check if seats are already booked for the selected date
       const bookedSeats = selectedBus.bookedSeatsByDate[selectedDate] || [];
       const conflictSeats = selectedSeats.filter(seat => bookedSeats.includes(seat));
-  
+
       if (conflictSeats.length > 0) {
         alert("Some seats are already booked for this date");
         return;
       }
-  
+
       await axios.post(`${apiurl}/bookings`, bookingDetails);
-  
+
       // Ensure bookedSeatsByDate[selectedDate] exists
       if (!selectedBus.bookedSeatsByDate[selectedDate]) {
         selectedBus.bookedSeatsByDate[selectedDate] = [];
       }
-  
+
       // Add newly booked seats for the selected date
       selectedBus.bookedSeatsByDate[selectedDate] = [
         ...selectedBus.bookedSeatsByDate[selectedDate],
         ...selectedSeats
       ];
-  
+
       console.log(selectedBus.bookedSeatsByDate)
       setSelectedSeats([]);
       alert("Booking successfully completed!");
@@ -95,12 +97,12 @@ console.log(selectedBus);
       console.error('There was an error creating the booking!', error);
     }
   };
-  
-  
-  
+
+
+
 
   return (
-    <div className='text-center'>
+    <div className='text-center' style={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       <h5>{searchDetails.from} To {searchDetails.to}</h5>
       <h5>Date: {dayjs(searchDetails.date).format('YYYY-MM-DD')}</h5>
       <br />
@@ -113,31 +115,45 @@ console.log(selectedBus);
       >
         <Form>
           {selectedSeats.map((seatNo, index) => (
-            <div key={index}>
-              <div className='my-3'>Seat Number: {seatNo}</div>
+            <div key={index} style={{ margin: '20px 0', padding: '10px', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', backgroundColor: '#fff' }}>
+              <div className='my-3' style={{ fontWeight: 'bold' }}>Seat Number: {seatNo}</div>
               <div className='form-group'>
-                <label htmlFor={`passengers[${index}].Name`}>Name</label>
+                <label htmlFor={`passengers[${index}].Name`}>Name:</label>
                 <Field
-                  type='text'
-                  id={`passengers[${index}].Name`}
-                  name={`passengers[${index}].Name`}
-                  className='form-control'
+              fullWidth
+              id={`passengers[${index}].Name`}
+              name={`passengers[${index}].Name`}
+              label='Name'
+              variant='outlined'
+              style={{ marginBottom: '10px' , marginleft: '10px' }}
                 />
                 <ErrorMessage name={`passengers[${index}].Name`} component='div' className='text-danger' />
               </div>
               <div className='form-group'>
-                <label htmlFor={`passengers[${index}].PhoneNumber`}>Phone Number</label>
+                <label htmlFor={`passengers[${index}].Age`}>Age: </label>
                 <Field
-                  type='text'
-                  id={`passengers[${index}].PhoneNumber`}
-                  name={`passengers[${index}].PhoneNumber`}
-                  className='form-control'
+           fullWidth
+           id={`passengers[${index}].Age`}
+           name={`passengers[${index}].Age`}
+           label='Age'
+           type='number'
+           variant='outlined'
+           style={{ marginBottom: '10px' , marginleft: '10px' }}
                 />
-                <ErrorMessage name={`passengers[${index}].PhoneNumber`} component='div' className='text-danger' />
+                <ErrorMessage name={`passengers[${index}].Age`} component='div' className='text-danger' />
               </div>
             </div>
           ))}
-          <button type='submit' className='btn btn-primary'>Pay Now</button>
+          <Button
+              type='submit'
+              variant='contained'
+              color='primary'
+              style={{ marginTop: '20px' }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#004ba0'}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#1976d2'}
+            >
+              Book Now
+            </Button>
         </Form>
       </Formik>
     </div>
