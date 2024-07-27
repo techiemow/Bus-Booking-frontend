@@ -9,11 +9,13 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { BusesDetails, locations } from '../../Constants/Data';
 import { BusList } from './BusList';
+import { useNavigate } from 'react-router-dom';
 
 const Buses = () => {
   const { searchDetails, setSearchDetails } = useContext(BusContext);
   const [selectedBus, setSelectedBus] = useState([]);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleExchange = () => {
     setSearchDetails(prevDetails => ({
@@ -64,7 +66,7 @@ const Buses = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
         <Autocomplete
           disablePortal
@@ -73,14 +75,15 @@ const Buses = () => {
           sx={{ width: 300, marginRight: '10px' }}
           value={searchDetails.from}
           onChange={handleFromChange}
-          renderInput={(params) => <TextField {...params} label="From" />}
+          renderInput={(params) => <TextField {...params} label="From" variant="outlined" />}
         />
-        <button
+        <Button
           onClick={handleExchange}
-          style={{ margin: '0 10px', padding: '10px', cursor: 'pointer', backgroundColor: '#1976d2', color: '#fff', border: 'none', borderRadius: '4px' }}
+          sx={{ margin: '0 10px', padding: '10px', backgroundColor: '#1976d2', color: '#fff', borderRadius: '4px', '&:hover': { backgroundColor: '#1565c0' } }}
+          variant="contained"
         >
-          <i className="fa-solid fa-arrow-right-arrow-left"></i>
-        </button>
+        <i className="fa-solid fa-arrow-right-arrow-left"></i>
+        </Button>
         <Autocomplete
           disablePortal
           id="combo-box-demo-to"
@@ -88,22 +91,29 @@ const Buses = () => {
           sx={{ width: 300, marginLeft: '10px' }}
           value={searchDetails.to}
           onChange={handleToChange}
-          renderInput={(params) => <TextField {...params} label="To" />}
+          renderInput={(params) => <TextField {...params} label="To" variant="outlined" />}
         />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoContainer components={['DatePicker']} sx={{ marginLeft: '20px' }}>
+          <DemoContainer components={['DatePicker']} sx={{ marginLeft: '20px', marginBottom:"8px" }}>
             <DatePicker
               value={searchDetails.date}
               onChange={handleDateChange}
-              renderInput={(params) => <TextField {...params} label="Departure Date" />}
+              renderInput={(params) => <TextField {...params} label="Departure Date" variant="outlined" />}
+              disablePast
             />
           </DemoContainer>
         </LocalizationProvider>
-        <Button variant="contained" onClick={handleSearch} endIcon={<SendIcon />} sx={{ marginLeft: '20px' }} disabled={!!error}>
+        <Button
+          variant="contained"
+          onClick={handleSearch}
+          endIcon={<SendIcon />}
+          sx={{ marginLeft: '20px', transition: 'background-color 0.3s', '&:hover': { backgroundColor: '#004ba0' } }}
+          disabled={!!error}
+        >
           Search
         </Button>
       </div>
-      {error && <div style={{ color: 'red', textAlign: 'center', marginBottom: '20px' }}>{error}</div>}
+      {error && <div style={{ color: 'red', textAlign: 'center', marginBottom: '20px', opacity: 0.9, transition: 'opacity 0.3s' }}>{error}</div>}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <h3>Selected Bus Route:</h3>
         <div style={{ marginBottom: '8px' }}>
@@ -116,7 +126,7 @@ const Buses = () => {
           <p>Departure Date: {searchDetails.date ? dayjs(searchDetails.date).format('YYYY-MM-DD') : 'Not selected'}</p>
         </div>
       </div>
-      {selectedBus && selectedBus.length > 0 ? <BusList selectedBus={selectedBus} /> : <h2 style={{textAlign:"center"}}>No buses Found</h2>}
+      {selectedBus && selectedBus.length > 0 ? <BusList selectedBus={selectedBus} /> : <h2 style={{ textAlign: 'center' }}>No buses found</h2>}
     </div>
   );
 };

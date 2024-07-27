@@ -1,37 +1,6 @@
-.navbar-brand {
-  position: static;
-  left: 60%;
-  right: 20%;
-  transform: translateX(-0%);
-}
-.navigation{
-  box-shadow: 0px 2px 4px 0px rgba(0,0,0, 0.4);
-
-  background: linear-gradient(90deg, #ddffef, #dea3a3);
-}
-.navbar-header {
-  position: relative;
-} 
-.Item {
-
-  cursor: pointer;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
 }
-
-@media screen and (max-width: 600px) {
-  .navbar-brand {
-    position: static;
-    transform: none;
-    text-align: center;
-  }
-  
-  .Item {
-    position: static;
-    transform: none;
-    display: block;
-    text-align: center;
-    left: 0;
-  }
-}
-
-

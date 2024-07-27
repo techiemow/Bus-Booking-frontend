@@ -13,6 +13,7 @@ import Layout from './Components/Layout';
 import Footer from './Components/Footer';
 import BookingForm from './Components/BookingForm';
 import PrivateRoute from './Components/PrivateRoute';
+import MyAccount from '../Accounts/MyAccount';
 
 
 const Fullpage = () => {
@@ -38,7 +39,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<SignUp />} />
           <Route path='*' element={<Fullpage />} />
-          
+          <Route path='/MyAccount' element={<MyAccount />} />
           <Route element={<PrivateRoute />}>
             <Route
               path="/Layout/:id"

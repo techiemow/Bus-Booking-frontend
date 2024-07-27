@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaMapPin } from 'react-icons/fa';
+import { FaMapPin, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from "../assests/logo.png";
 
@@ -8,58 +8,62 @@ const Footer = () => {
     <footer className="w-100 py-5 bg-light">
       <div className="container">
         <div className="row">
-          <div className="col-lg-5 col-md-6 mb-4">
+          {/* Logo and Description */}
+          <div className="col-lg-4 col-md-6 mb-4">
             <Link to="/" className='text-dark font-weight-bold'>
-              <img src={logo} alt="logo" className="img-fluid mb-3" />
+              <img src={logo} alt="logo" className="img-fluid mb-3" style={{ maxWidth: '150px' }} />
             </Link>
             <p className="text-secondary">
-          
+              Providing top-notch bus travel experiences with a focus on safety, comfort, and convenience.
             </p>
           </div>
 
+          {/* About Us Links */}
           <div className="col-lg-2 col-md-6 mb-4">
             <h5 className="font-weight-bold">About Us</h5>
             <ul className="list-unstyled">
-              <li><Link to="#" className='text-secondary'>About Us</Link></li>
-              <li><Link to="#" className='text-secondary'>Contact Us</Link></li>
-              <li><Link to="#" className='text-secondary'>Privacy Policy</Link></li>
-              <li><Link to="#" className='text-secondary'>Terms and Conditions</Link></li>
+              <li><Link to="/about-us" className='text-secondary'>About Us</Link></li>
+              <li><Link to="/contact-us" className='text-secondary'>Contact Us</Link></li>
+              <li><Link to="/privacy-policy" className='text-secondary'>Privacy Policy</Link></li>
+              <li><Link to="/terms-conditions" className='text-secondary'>Terms and Conditions</Link></li>
             </ul>
           </div>
 
+          {/* Services Links */}
           <div className="col-lg-2 col-md-6 mb-4">
             <h5 className="font-weight-bold">Services</h5>
             <ul className="list-unstyled">
-              <li><Link to="#" className='text-secondary'>Safety Guarantee</Link></li>
-              <li><Link to="#" className='text-secondary'>FAQ & Support</Link></li>
-              <li><Link to="#" className='text-secondary'>Luxury Buses</Link></li>
-              <li><Link to="#" className='text-secondary'>Enough Facilities</Link></li>
+              <li><Link to="/safety-guarantee" className='text-secondary'>Safety Guarantee</Link></li>
+              <li><Link to="/faq-support" className='text-secondary'>FAQ & Support</Link></li>
+              <li><Link to="/luxury-buses" className='text-secondary'>Luxury Buses</Link></li>
+              <li><Link to="/facilities" className='text-secondary'>Facilities</Link></li>
             </ul>
           </div>
 
-          <div className="col-lg-3 col-md-6 mb-4">
+          {/* Contact Information */}
+          <div className="col-lg-4 col-md-6 mb-4">
             <h5 className="font-weight-bold">Get In Touch</h5>
             <div className="d-flex mb-2">
               <FaMapPin className='text-secondary mr-2' />
               <div>
-                <p className="mb-1 text-secondary small">For Support & Reservations</p>
+                <p className="mb-1 text-secondary small">Address</p>
                 <p className="mb-0 text-dark">123, Main Street, Anytown, USA</p>
               </div>
             </div>
 
             <div className="d-flex mb-2">
-              <FaMapPin className='text-secondary mr-2' />
+              <FaPhoneAlt className='text-secondary mr-2' />
               <div>
-                <p className="mb-1 text-secondary small">For Support & Reservations</p>
-                <p className="mb-0 text-dark">123, Main Street, Anytown, USA</p>
+                <p className="mb-1 text-secondary small">Phone</p>
+                <p className="mb-0 text-dark">+1 (234) 567-8900</p>
               </div>
             </div>
 
             <div className="d-flex">
-              <FaMapPin className='text-secondary mr-2' />
+              <FaEnvelope className='text-secondary mr-2' />
               <div>
-                <p className="mb-1 text-secondary small">For Support & Reservations</p>
-                <p className="mb-0 text-dark">123, Main Street, Anytown, USA</p>
+                <p className="mb-1 text-secondary small">Email</p>
+                <p className="mb-0 text-dark">support@busvoyage.com</p>
               </div>
             </div>
           </div>
