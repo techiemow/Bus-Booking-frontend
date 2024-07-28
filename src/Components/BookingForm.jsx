@@ -57,6 +57,7 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
       numberOfSeats: selectedSeats,
       totalPrice,
       date: dayjs(searchDetails.date).format('YYYY-MM-DD'), // Include date in booking details
+      payment: false
     };
 
     try {

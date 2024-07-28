@@ -47,7 +47,7 @@ const Footer = () => {
               <FaMapPin className='text-secondary mr-2' />
               <div>
                 <p className="mb-1 text-secondary small">Address</p>
-                <p className="mb-0 text-dark">123, Main Street, Anytown, USA</p>
+                <p className="mb-0 text-dark">123,Main Street,Bangalore,India</p>
               </div>
             </div>
 
@@ -55,7 +55,7 @@ const Footer = () => {
               <FaPhoneAlt className='text-secondary mr-2' />
               <div>
                 <p className="mb-1 text-secondary small">Phone</p>
-                <p className="mb-0 text-dark">+1 (234) 567-8900</p>
+                <p className="mb-0 text-dark">9068954680</p>
               </div>
             </div>
 

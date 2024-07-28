@@ -70,7 +70,7 @@ export default function MyAccount() {
   useEffect(() => {
     
     fetchUserData();
-  }, [username]);
+  }, [userData.username]);
 
   const validationSchema = Yup.object({
     username: Yup.string().required('Username is required'),
@@ -146,6 +146,7 @@ export default function MyAccount() {
                   </TableBody>
                 </Table>
               </TableContainer>
+              <div>
               <Button
                 variant="contained"
                 color="primary"
@@ -153,6 +154,10 @@ export default function MyAccount() {
               >
                 Update Account Details
               </Button>
+              <Button color='warning' className='mx-3'  variant="contained" onClick={()=>{navigate("/")}}>
+            Go Back
+      </Button>
+      </div>
             </>
           ) : (
             <Formik
