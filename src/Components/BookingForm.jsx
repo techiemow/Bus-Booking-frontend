@@ -57,7 +57,6 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
       numberOfSeats: selectedSeats,
       totalPrice,
       date: dayjs(searchDetails.date).format('YYYY-MM-DD'), // Include date in booking details
-      payment: false
     };
 
     try {
@@ -79,16 +78,6 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
 
       await axios.post(`${apiurl}/bookings`, bookingDetails);
 
-      // Ensure bookedSeatsByDate[selectedDate] exists
-      if (!selectedBus.bookedSeatsByDate[selectedDate]) {
-        selectedBus.bookedSeatsByDate[selectedDate] = [];
-      }
-
-      // Add newly booked seats for the selected date
-      selectedBus.bookedSeatsByDate[selectedDate] = [
-        ...selectedBus.bookedSeatsByDate[selectedDate],
-        ...selectedSeats
-      ];
 
       console.log(selectedBus.bookedSeatsByDate)
       setSelectedSeats([]);

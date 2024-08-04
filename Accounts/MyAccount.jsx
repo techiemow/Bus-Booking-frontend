@@ -50,12 +50,14 @@ export default function MyAccount() {
     username: '',
     phoneNumber: '',
     emailaddress: '',
-    _id: '' // Make sure this field exists and is set
+    _id: ''
   });
   const [showForm, setShowForm] = useState(false);
   const [bookingCount ,setbookingCount] = useState(0);
   const fetchUserData = async () => {
     try {
+     
+      
       const response = await axios.get(`${apiurl}/user/${username}`);
       console.log('User data:', response.data.user); // Debug log
       setUserData(response.data.user);

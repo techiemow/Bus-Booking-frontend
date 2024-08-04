@@ -5,7 +5,7 @@ import logo from "../assests/logo.png";
 
 const Footer = () => {
   return (
-    <footer className="w-100 py-5 bg-light">
+    <footer className="w-100 my-2 py-1 bg-light">
       <div className="container">
         <div className="row">
           {/* Logo and Description */}
@@ -22,10 +22,10 @@ const Footer = () => {
           <div className="col-lg-2 col-md-6 mb-4">
             <h5 className="font-weight-bold">About Us</h5>
             <ul className="list-unstyled">
-              <li><Link to="/about-us" className='text-secondary'>About Us</Link></li>
-              <li><Link to="/contact-us" className='text-secondary'>Contact Us</Link></li>
-              <li><Link to="/privacy-policy" className='text-secondary'>Privacy Policy</Link></li>
-              <li><Link to="/terms-conditions" className='text-secondary'>Terms and Conditions</Link></li>
+              <li><Link to="#" className='text-secondary'>About Us</Link></li>
+              <li><Link to="#" className='text-secondary'>Contact Us</Link></li>
+              <li><Link to="#" className='text-secondary'>Privacy Policy</Link></li>
+              <li><Link to="#" className='text-secondary'>Terms and Conditions</Link></li>
             </ul>
           </div>
 
@@ -33,10 +33,10 @@ const Footer = () => {
           <div className="col-lg-2 col-md-6 mb-4">
             <h5 className="font-weight-bold">Services</h5>
             <ul className="list-unstyled">
-              <li><Link to="/safety-guarantee" className='text-secondary'>Safety Guarantee</Link></li>
-              <li><Link to="/faq-support" className='text-secondary'>FAQ & Support</Link></li>
-              <li><Link to="/luxury-buses" className='text-secondary'>Luxury Buses</Link></li>
-              <li><Link to="/facilities" className='text-secondary'>Facilities</Link></li>
+              <li><Link to="#" className='text-secondary'>Safety Guarantee</Link></li>
+              <li><Link to="#" className='text-secondary'>FAQ & Support</Link></li>
+              <li><Link to="#" className='text-secondary'>Luxury Buses</Link></li>
+              <li><Link to="#" className='text-secondary'>Facilities</Link></li>
             </ul>
           </div>
 
