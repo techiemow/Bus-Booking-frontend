@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
-import 'react-toastify/dist/ReactToastify.css';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignUp from '../Accounts/Signup';
 import Login from '../Accounts/Login';
 import { ToastProvider } from '../Notification/ToastContext';
 import Home from './Components/Home';
-import { ToastContainer } from 'react-toastify';
+
 import './App.css'; // Add this line for global styles
 import Buses from './Components/Buses';
 import Layout from './Components/Layout';
@@ -24,7 +24,7 @@ const Fullpage = () => {
       <Home />
       <Buses />
       <Footer />
-      <ToastContainer />
+    
     </div>
   );
 };

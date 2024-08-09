@@ -18,9 +18,8 @@ import axios from 'axios';
 import { apiurl } from '../Constants/apiurl';
 import ToastContext from '../Notification/ToastContext';
 import 'react-toastify/dist/ReactToastify.css';
-import "./Login.css"
-
-
+import "./Login.css";
+import HomeNavbar from '../src/Components/HomeNavbar';
 
 function Copyright(props) {
   return (
@@ -75,18 +74,29 @@ const Login = () => {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems:"center",marginLeft: '500px' }}>
+      <HomeNavbar />
+      <Container component="main" maxWidth="xs" sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: { xs: '16px', sm: '24px' }, // Adjust padding based on screen size
+        marginTop: '8px',
+        marginBottom: '8px',
+      }}>
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            width: '100%', // Ensure the Box takes full width
+            maxWidth: 400, // Maximum width of the form
+            marginTop: 8,
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <span className="material-symbols-outlined">
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 56, height: 56 }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>
               departure_board
             </span>
           </Avatar>
@@ -99,7 +109,7 @@ const Login = () => {
             onSubmit={handleSubmit}
           >
             {({ isSubmitting }) => (
-              <Box component={Form} noValidate sx={{ mt: 1 }}>
+              <Form noValidate>
                 <Field
                   as={TextField}
                   variant="outlined"
@@ -110,6 +120,7 @@ const Login = () => {
                   name="username"
                   autoComplete="username"
                   autoFocus
+                  sx={{ mb: 2 }}
                 />
                 <ErrorMessage name="username" component="div" className="error text-danger" />
                 <Field
@@ -122,6 +133,7 @@ const Login = () => {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  sx={{ mb: 2 }}
                 />
                 <ErrorMessage name="password" component="div" className="error text-danger" />
                 <FormControlLabel
@@ -145,12 +157,12 @@ const Login = () => {
                     </Link>
                   </Grid>
                   <Grid item>
-                    <NavLink to={"/register"} variant="body2">
+                    <NavLink to="/register" variant="body2">
                       {"Don't have an account? Sign Up"}
                     </NavLink>
                   </Grid>
                 </Grid>
-              </Box>
+              </Form>
             )}
           </Formik>
         </Box>
@@ -161,3 +173,4 @@ const Login = () => {
 }
 
 export default Login;
+  

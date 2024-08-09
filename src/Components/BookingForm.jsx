@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { BusContext } from '../Context/BusContext';
 import * as Yup from 'yup';
+import { TextField, Box, Grid, Typography, Breadcrumbs, Container, Link } from '@mui/material';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import { BusesDetails } from '../../Constants/Data';
 import { apiurl } from '../../Constants/apiurl';
 import { Button } from '@mui/material';
+import HomeNavbar from './HomeNavbar';
 
 const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
   const navigate = useNavigate();
@@ -48,6 +50,7 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
   const handleSubmit = async (values) => {
     const totalPrice = selectedSeats.length * seatPrice;
     const bookingDetails = {
+      busid:Id,
       username: localStorage.getItem("login"),
       passengerName: values.passengers.map(p => p.Name),
       busType: selectedBus.busType,
@@ -76,13 +79,18 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
         return;
       }
 
-      await axios.post(`${apiurl}/bookings`, bookingDetails);
+      const usertoken = localStorage.getItem("usertoken");
+      await axios.post(`${apiurl}/bookings`, bookingDetails,{
+        headers:{
+          auth:usertoken
+        }
+      });
 
 
       console.log(selectedBus.bookedSeatsByDate)
       setSelectedSeats([]);
       alert("Booking successfully completed!");
-      navigate('/');
+      navigate('/MyBookings');
     } catch (error) {
       console.error('There was an error creating the booking!', error);
     }
@@ -92,61 +100,98 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
 
 
   return (
-    <div className='text-center' style={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
-      <h5>{searchDetails.from} To {searchDetails.to}</h5>
-      <h5>Date: {dayjs(searchDetails.date).format('YYYY-MM-DD')}</h5>
-      <br />
-      <h5>Please Fill out the below form</h5>
+    <div>
+    <HomeNavbar/>
+    <Container component="main" maxWidth="md" sx={{ padding: '20px', backgroundColor: '#f5f5f5', minHeight: '100vh' }}>
+    <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: '20px' }}>
+        <Link color="inherit" href="/">
+          Home
+        </Link>
+        <Typography color="text.primary">Booking</Typography>
+      </Breadcrumbs>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
+    <Typography variant="h5" align="center">
+      {searchDetails.from} To {searchDetails.to}
+    </Typography>
+    <Typography variant="h6" align="center">
+      Date: {dayjs(searchDetails.date).format('YYYY-MM-DD')}
+    </Typography>
+    <Typography variant="h6" align="center" sx={{ marginY: '20px' }}>
+      Please Fill out the below form
+    </Typography>
+
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ isSubmitting }) => (
         <Form>
-          {selectedSeats.map((seatNo, index) => (
-            <div key={index} style={{ margin: '20px 0', padding: '10px', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)', backgroundColor: '#fff' }}>
-              <div className='my-3' style={{ fontWeight: 'bold' }}>Seat Number: {seatNo}</div>
-              <div className='form-group'>
-                <label htmlFor={`passengers[${index}].Name`}>Name:</label>
-                <Field
-              fullWidth
-              id={`passengers[${index}].Name`}
-              name={`passengers[${index}].Name`}
-              label='Name'
-              variant='outlined'
-              style={{ marginBottom: '10px' , marginleft: '10px' }}
-                />
-                <ErrorMessage name={`passengers[${index}].Name`} component='div' className='text-danger' />
-              </div>
-              <div className='form-group'>
-                <label htmlFor={`passengers[${index}].Age`}>Age: </label>
-                <Field
-           fullWidth
-           id={`passengers[${index}].Age`}
-           name={`passengers[${index}].Age`}
-           label='Age'
-           type='number'
-           variant='outlined'
-           style={{ marginBottom: '10px' , marginleft: '10px' }}
-                />
-                <ErrorMessage name={`passengers[${index}].Age`} component='div' className='text-danger' />
-              </div>
-            </div>
-          ))}
-          <Button
-              type='submit'
-              variant='contained'
-              color='primary'
-              style={{ marginTop: '20px' }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#004ba0'}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#1976d2'}
-            >
-              Book Now
-            </Button>
+          <Grid container spacing={3}>
+            {selectedSeats.map((seatNo, index) => (
+              <Grid item xs={12} key={index}>
+                <Box
+                  sx={{
+                    padding: '10px',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+                    backgroundColor: '#fff',
+                    marginBottom: '20px'
+                  }}
+                >
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                    Seat Number: {seatNo}
+                  </Typography>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={6}>
+                      <Field
+                        as={TextField}
+                        fullWidth
+                        id={`passengers[${index}].Name`}
+                        name={`passengers[${index}].Name`}
+                        label="Name"
+                        variant="outlined"
+                        helperText={<ErrorMessage name={`passengers[${index}].Name`} />}
+                        error={Boolean(<ErrorMessage name={`passengers[${index}].Name`} />)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={6}>
+                      <Field
+                        as={TextField}
+                        fullWidth
+                        id={`passengers[${index}].Age`}
+                        name={`passengers[${index}].Age`}
+                        label="Age"
+                        type="number"
+                        variant="outlined"
+                        helperText={<ErrorMessage name={`passengers[${index}].Age`} />}
+                        error={Boolean(<ErrorMessage name={`passengers[${index}].Age`} />)}
+                      />
+                    </Grid>
+                  </Grid>
+                </Box>
+              </Grid>
+            ))}
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                sx={{ marginTop: '20px' }}
+                disabled={isSubmitting}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#004ba0'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#1976d2'}
+              >
+                Book Now
+              </Button>
+            </Grid>
+          </Grid>
         </Form>
-      </Formik>
-    </div>
+      )}
+    </Formik>
+  </Container>
+  </div>
   );
 };
 

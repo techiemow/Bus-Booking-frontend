@@ -17,8 +17,9 @@ import bcrypt from 'bcryptjs';
 import * as Yup from 'yup';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
-import "./Signup.css"
+import "./Signup.css";
 import { apiurl } from '../Constants/apiurl';
+import HomeNavbar from '../src/Components/HomeNavbar';
 
 function Copyright(props) {
   return (
@@ -37,7 +38,6 @@ const theme = createTheme();
 
 export default function SignUp() {
   const [terms, setTerms] = useState(false);
-
   const navigate = useNavigate();
 
   const initialValues = {
@@ -63,7 +63,8 @@ export default function SignUp() {
       // Hash the password
       const hashedPassword = await bcrypt.hash(values.password, 10); // Salt rounds = 10
 
-      // Make API request with hashed password
+      console.log(values);
+
       const apiResponse = await axios.post(`${apiurl}/registration`, {
         username: values.username,
         phoneNumber: values.phoneNumber,
@@ -76,8 +77,7 @@ export default function SignUp() {
       if (apiResponse?.data?._id) {
         resetForm(); // Reset form fields to initial values
         setTerms(false); // Reset terms checkbox
-        // Optionally, add any logic after successful registration
-        // e.g., redirect user to login page
+        navigate("/login");
       }
     } catch (error) {
       console.error('Registration error:', error);
@@ -88,19 +88,30 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems:"center", marginLeft: '500px' }}>
+      <HomeNavbar />
+      <Container component="main" maxWidth="xs" sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: { xs: '16px', sm: '24px' }, // Adjust padding based on screen size
+        marginTop: '8px',
+        marginBottom: '8px',
+      }}>
         <CssBaseline />
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            width: '100%', // Ensure the Box takes full width
+            maxWidth: 400, // Maximum width of the form
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <span class="material-symbols-outlined">
-departure_board
-</span>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 56, height: 56 }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>
+              departure_board
+            </span>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
@@ -123,6 +134,7 @@ departure_board
                       id="username"
                       label="Username"
                       autoFocus
+                      sx={{ mb: 2 }}
                     />
                     <ErrorMessage name="username" component="div" className="error text-danger" />
                   </Grid>
@@ -135,6 +147,7 @@ departure_board
                       label="Email Address"
                       name="email"
                       autoComplete="email"
+                      sx={{ mb: 2 }}
                     />
                     <ErrorMessage name="email" component="div" className="error text-danger" />
                   </Grid>
@@ -148,6 +161,7 @@ departure_board
                       type="password"
                       id="password"
                       autoComplete="new-password"
+                      sx={{ mb: 2 }}
                     />
                     <ErrorMessage name="password" component="div" className="error text-danger" />
                   </Grid>
@@ -161,6 +175,7 @@ departure_board
                       type="password"
                       id="confirmPassword"
                       autoComplete="new-password"
+                      sx={{ mb: 2 }}
                     />
                     <ErrorMessage name="confirmPassword" component="div" className="error text-danger" />
                   </Grid>
@@ -174,6 +189,7 @@ departure_board
                       type="text"
                       id="phoneNumber"
                       autoComplete="phoneNumber"
+                      sx={{ mb: 2 }}
                     />
                     <ErrorMessage name="phoneNumber" component="div" className="error text-danger" />
                   </Grid>
@@ -192,10 +208,10 @@ departure_board
                   color="primary"
                   disabled={!terms || isSubmitting}
                   sx={{ mt: 3, mb: 2 }}
-                  onClick={() => navigate("/")}
                 >
                   Sign Up
                 </Button>
+
                 <Grid container justifyContent="flex-end">
                   <Grid item>
                     <NavLink to="/login" variant="body2">
@@ -209,8 +225,6 @@ departure_board
         </Box>
         <Copyright sx={{ mt: 5 }} />
       </Container>
-      
     </ThemeProvider>
-    
   );
 }

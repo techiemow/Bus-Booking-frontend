@@ -22,6 +22,7 @@ import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { apiurl } from '../Constants/apiurl';
 import { useNavigate } from 'react-router-dom';
+import HomeNavbar from '../src/Components/HomeNavbar';
 
 function Copyright(props) {
   return (
@@ -43,8 +44,8 @@ const theme = createTheme();
 
 export default function MyAccount() {
 
-    const username = localStorage.getItem('login');
-
+    const username = localStorage.getItem('login');   
+    const usertoken = localStorage.getItem('usertoken');
     const navigate = useNavigate();
   const [userData, setUserData] = useState({
     username: '',
@@ -57,8 +58,10 @@ export default function MyAccount() {
   const fetchUserData = async () => {
     try {
      
-      
-      const response = await axios.get(`${apiurl}/user/${username}`);
+  
+      const response = await axios.get(`${apiurl}/user/${username}`,  {headers:{
+        auth:usertoken,
+      }});
       console.log('User data:', response.data.user); // Debug log
       setUserData(response.data.user);
       setbookingCount(response.data.bookingCount);
@@ -88,7 +91,9 @@ export default function MyAccount() {
         throw new Error('User ID is missing');
       }
 
-      const apiResponse = await axios.put(`${apiurl}/user/${userData._id}`, values);
+      const apiResponse = await axios.put(`${apiurl}/user/${userData._id}`, values, {headers:{
+        auth:usertoken,
+      }});
       console.log('API Response:', apiResponse.data); // Debug log
       setUserData(apiResponse.data);
       setShowForm(false);
@@ -101,7 +106,9 @@ export default function MyAccount() {
   };
 
   return (
+
     <ThemeProvider theme={theme}>
+     
       <Container component="main" maxWidth="md" sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: "center", marginTop:"100px"}}>
         <CssBaseline />
         <Box

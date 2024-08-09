@@ -13,7 +13,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-
 const pages = ["Sign Up", "Login"];
 const settings = ['My Account', "My Bookings", 'Logout'];
 
@@ -24,21 +23,10 @@ const Navbar = () => {
     const username = localStorage.getItem('login') || '';
     const navigate = useNavigate();
 
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
+    const handleOpenNavMenu = (event) => setAnchorElNav(event.currentTarget);
+    const handleOpenUserMenu = (event) => setAnchorElUser(event.currentTarget);
+    const handleCloseNavMenu = () => setAnchorElNav(null);
+    const handleCloseUserMenu = () => setAnchorElUser(null);
 
     const handlePageClick = (page) => {
         switch (page) {
@@ -76,9 +64,7 @@ const Navbar = () => {
         <AppBar position="static" sx={{ margin: 0, padding: 0 }}>
             <Container maxWidth="xl" sx={{ padding: 0 }}>
                 <Toolbar disableGutters>
-                <span className="material-symbols-outlined">
-              departure_board
-            </span>
+                    <span className="material-symbols-outlined">departure_board</span>
                     <Typography
                         variant="h6"
                         noWrap
@@ -101,7 +87,7 @@ const Navbar = () => {
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
-                            aria-label="account of current user"
+                            aria-label="menu"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
@@ -112,32 +98,17 @@ const Navbar = () => {
                         <Menu
                             id="menu-appbar"
                             anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
+                            anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                             keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
+                            transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
                         >
-                            {username.length === 0 ? (
-                                pages.map((page) => (
-                                    <MenuItem key={page} onClick={() => handlePageClick(page)}>
-                                        <Typography textAlign="center">{page}</Typography>
-                                    </MenuItem>
-                                ))
-                            ) : (
-                                <MenuItem key="settings" onClick={handleOpenUserMenu}>
-                                    <Typography textAlign="center">Settings</Typography>
+                            {username.length === 0 && pages.map((page) => (
+                                <MenuItem key={page} onClick={() => handlePageClick(page)}>
+                                    <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
-                            )}
+                            ))}
                         </Menu>
                     </Box>
 
@@ -172,9 +143,7 @@ const Navbar = () => {
                                 </Button>
                             ))
                         ) : (
-                            <Box>
-                           
-                            </Box>
+                            <Box />
                         )}
                     </Box>
 
@@ -182,22 +151,16 @@ const Navbar = () => {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar src="/broken-image.jpg" />
+                                    <Avatar src="/broken-image.jpg" />
                                 </IconButton>
                             </Tooltip>
                             <Menu
                                 sx={{ mt: '45px' }}
                                 id="menu-appbar"
                                 anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
+                                anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                                 keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
+                                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >

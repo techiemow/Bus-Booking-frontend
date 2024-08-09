@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Box } from '@mui/material';
+import { Container, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, Box, useMediaQuery, useTheme } from '@mui/material';
 import axios from 'axios';
 import { apiurl } from '../Constants/apiurl';
 import { styled } from '@mui/material/styles';
@@ -52,7 +52,6 @@ const GradientTitle = styled(Typography)(({ theme }) => ({
 }));
 
 const StyledTableHead = styled(TableHead)(({ theme }) => ({
-
   color: 'whitesmoke',
   '& th': {
     fontWeight: 'bold',
@@ -72,27 +71,30 @@ const DeleteButton = styled(Button)(({ theme }) => ({
 }));
 
 const MyBookings = () => {
-  const navigate  = useNavigate()
+  const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
   const [order, setOrder] = useState(null);
   const username = localStorage.getItem('login');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const usertoken = localStorage.getItem('usertoken');
 
+  const fetchBookings = async () => {
+    try {
+      const response = await axios.get(`${apiurl}/MyBookings/${username}`,{
+        headers:{
+          auth:usertoken
+        }
+      });
+      setBookings(response.data);
+    } catch (error) {
+      console.error('Error fetching bookings:', error);
+    }
+  };
 
-    const fetchBookings = async () => {
-      try {
-        const response = await axios.get(`${apiurl}/MyBookings/${username}`);
-
-        setBookings(response.data);
-      } catch (error) {
-        console.error('Error fetching bookings:', error);
-      }
-    };
-
-    
-  
-  useEffect(() =>{
+  useEffect(() => {
     fetchBookings();
-  },[])
+  }, []);
 
   const handlePayment = async (bookingId, totalPrice) => {
     if (totalPrice > 50000) {
@@ -103,6 +105,10 @@ const MyBookings = () => {
       const response = await axios.post(`${apiurl}/payment/${bookingId}`, {
         amount: totalPrice * 100,
         currency: "INR",
+      },{
+        headers:{
+          auth:usertoken
+        }
       });
       setOrder({ ...response.data, bookingId }); // Include bookingId in the order object
     } catch (error) {
@@ -110,20 +116,19 @@ const MyBookings = () => {
       alert("Failed to process payment");
     }
   };
-  
 
-  const handleDelete = async(bookingId) =>{
+  const handleDelete = async (bookingId) => {
     try {
       await axios.delete(`${apiurl}/MyDeletes/${bookingId}`);
-      setBookings(bookings.filter((b) => b.bookingId!== bookingId));
-     fetchBookings();
+      setBookings(bookings.filter((b) => b.bookingId !== bookingId));
+      fetchBookings();
     } catch (error) {
       console.error('Error deleting booking:', error);
       alert("Failed to delete booking");
     }
-  }
+  };
 
-  const handlePaymentstatus = () => {
+  const handlePaymentStatus = () => {
     if (!order) return;
 
     const { bookingId } = order;
@@ -136,22 +141,20 @@ const MyBookings = () => {
       order_id: order.id,
       handler: async (response) => {
         console.log(response);
-        
-        
-        
-           const orderId =response.razorpay_order_id
-          await axios.post(`${apiurl}/payment/verify/${orderId}`, {
-            paymentId: response.razorpay_payment_id,
-            orderId: response.razorpay_order_id,
-            signature: response.razorpay_signature,
-            bookingId,
-          });
-  
-          alert('Payment Completed');
-          setOrder(null);
-          fetchBookings(); 
-        
-  
+        const orderId = response.razorpay_order_id;
+        await axios.post(`${apiurl}/payment/verify/${orderId}`, {
+          paymentId: response.razorpay_payment_id,
+          orderId: response.razorpay_order_id,
+          signature: response.razorpay_signature,
+          bookingId,
+        },{
+          headers:{
+            auth:usertoken
+          }
+        });
+        alert('Payment Completed');
+        setOrder(null);
+        fetchBookings();
       },
       prefill: {
         name: "Customer Name",
@@ -171,87 +174,84 @@ const MyBookings = () => {
 
   return (
     <div>
-    <Container component="main" maxWidth="md" sx={{ marginTop: '20px', background: 'linear-gradient(180deg, #f0f4f8 0%, #d0d8e1 100%)', minHeight: '100vh', padding: '20px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-      <GradientTitle component="h1" variant="h4" sx={{ mb: 3 }}>
-        My Bookings
-      </GradientTitle>
-      <Button color='warning' variant='contained' onClick={() => { navigate("/") }}>
-        Go Back
-      </Button>
-    </div>
-  
-      <TableContainer component={Paper} sx={{ boxShadow: '0 4px 8px rgba(0,0,0,0.1)', borderRadius: '8px' }}>
-        <Table>
-          <StyledTableHead>
-            <TableRow>
-              <StyledTableCell>Bus Type</StyledTableCell>
-              <StyledTableCell>Departure Time</StyledTableCell>
-              <StyledTableCell>From</StyledTableCell>
-              <StyledTableCell>To</StyledTableCell>
-              <StyledTableCell>Seat Numbers</StyledTableCell>
-              <StyledTableCell>Total Price</StyledTableCell>
-              <StyledTableCell>Date</StyledTableCell>
-              <StyledTableCell>Delete </StyledTableCell>
-              <StyledTableCell>Payment</StyledTableCell>
-            </TableRow>
-          </StyledTableHead>
-          <TableBody>
-            {bookings.map((booking) => (
-              <StyledTableRow key={booking._id}>
-                <StyledTableCell>{booking.busType}</StyledTableCell>
-                <StyledTableCell>{booking.departureTime}</StyledTableCell>
-                <StyledTableCell>{booking.From}</StyledTableCell>
-                <StyledTableCell>{booking.To}</StyledTableCell>
-                <StyledTableCell>{booking.numberOfSeats.join(', ')}</StyledTableCell>
-                <StyledTableCell>₹{booking.totalPrice}</StyledTableCell>
-                <StyledTableCell>{new Date(booking.date).toLocaleDateString()}</StyledTableCell>
-                <StyledTableCell><DeleteButton variant='contained' onClick={()=>{handleDelete(booking._id)}}>Delete</DeleteButton></StyledTableCell>
-                <StyledTableCell align="center">
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      mt: 2,
-                    }}
-                  >
-                    {!booking.payment ? (
-                      <StyledButton
-                        variant="contained"
-                        color="success"
-                        onClick={() => handlePayment(booking._id, booking.totalPrice)}
-                      >
-                        Pay Now
-                      </StyledButton>
-                    ) : (
-                      <Typography textAlign="center">
-                        Payment Completed
-                      </Typography>
-                    )}
-                  </Box>
-                </StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 ,alignItems:"center" }}>
-      {order && (
-       
-          <Button onClick={handlePaymentstatus} variant="contained" color="primary">
-            Pay ₹{order.amount / 100}
+      <Container component="main" maxWidth={isMobile ? "xs" : "md"} sx={{ marginTop: '20px', background: 'linear-gradient(180deg, #f0f4f8 0%, #d0d8e1 100%)', minHeight: '100vh', padding: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <GradientTitle component="h1" variant="h4" sx={{ mb: 3 }}>
+            My Bookings
+          </GradientTitle>
+          <Button color='warning' variant='contained' onClick={() => navigate("/")}>
+            Go Back
           </Button>
-      
-      )}
-     
-  
-      
-      </Box>
-    </Container>
-    <Footer />
+        </div>
+
+        <TableContainer component={Paper} sx={{ boxShadow: '0 4px 8px rgba(0,0,0,0.1)', borderRadius: '8px', overflowX: 'auto' }}>
+          <Table>
+            <StyledTableHead>
+              <TableRow>
+                <StyledTableCell>Bus Type</StyledTableCell>
+                <StyledTableCell>Departure Time</StyledTableCell>
+                <StyledTableCell>From</StyledTableCell>
+                <StyledTableCell>To</StyledTableCell>
+                <StyledTableCell>Seat Numbers</StyledTableCell>
+                <StyledTableCell>Total Price</StyledTableCell>
+                <StyledTableCell>Date</StyledTableCell>
+                <StyledTableCell>Delete</StyledTableCell>
+                <StyledTableCell>Payment</StyledTableCell>
+              </TableRow>
+            </StyledTableHead>
+            <TableBody>
+              {bookings.map((booking) => (
+                <StyledTableRow key={booking._id}>
+                  <StyledTableCell>{booking.busType}</StyledTableCell>
+                  <StyledTableCell>{booking.departureTime}</StyledTableCell>
+                  <StyledTableCell>{booking.From}</StyledTableCell>
+                  <StyledTableCell>{booking.To}</StyledTableCell>
+                  <StyledTableCell>{booking.numberOfSeats.join(', ')}</StyledTableCell>
+                  <StyledTableCell>₹{booking.totalPrice}</StyledTableCell>
+                  <StyledTableCell>{new Date(booking.date).toLocaleDateString()}</StyledTableCell>
+                  <StyledTableCell>
+                    <DeleteButton variant='contained' onClick={() => handleDelete(booking._id)}>Delete</DeleteButton>
+                  </StyledTableCell>
+                  <StyledTableCell align="center">
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        mt: 2,
+                      }}
+                    >
+                      {!booking.payment ? (
+                        <StyledButton
+                          variant="contained"
+                          color="success"
+                          onClick={() => handlePayment(booking._id, booking.totalPrice)}
+                        >
+                          Pay Now
+                        </StyledButton>
+                      ) : (
+                        <Typography textAlign="center">
+                          Payment Completed
+                        </Typography>
+                      )}
+                    </Box>
+                  </StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <Box sx={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', mt: 2, alignItems: 'center' }}>
+          {order && (
+            <Button onClick={handlePaymentStatus} variant="contained" color="primary">
+              Pay ₹{order.amount / 100}
+            </Button>
+          )}
+        </Box>
+      </Container>
+      <Footer />
     </div>
   );
 };

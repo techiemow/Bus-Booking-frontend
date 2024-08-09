@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { BusContext } from '../Context/BusContext';
 import axios from 'axios';
 import { apiurl } from '../../Constants/apiurl';
+import HomeNavbar from './HomeNavbar';
 
 const Header = styled.h1`
   display: flex;
@@ -73,12 +74,17 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
 
   const fetchSeatAvailability = async () => {
     try {
+
       const username = localStorage.getItem('login');
        const form = searchDetails.from;
        const to = searchDetails.to;
       const selectedDate = dayjs(searchDetails.date).format('YYYY-MM-DD')
-      console.log(`${apiurl}/selection/${selectedDate}/${form}/${to}`)
-      const response = await axios.get(`${apiurl}/selection/${selectedDate}/${form}/${to}`);
+
+      const usertoken = localStorage.getItem("usertoken");
+    
+      const response = await axios.get(`${apiurl}/selection/${selectedDate}/${form}/${to}/${Id}`,{headers:{
+        auth:usertoken,
+      }});
       setBookedSeats(response.data.map(booking => booking.numberOfSeats).flat());
       console.log(response.data.map(booking => booking.numberOfSeats).flat());
     } catch (error) {
@@ -149,7 +155,8 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
 
   return (
     <React.Fragment>
-      <Header onClick={() => navigate('/')}>BusVoyage</Header>
+
+      <HomeNavbar/>
       <Container>
         <h2>{selectedBus.name}</h2>
         <h5>{selectedBus.busType}</h5>

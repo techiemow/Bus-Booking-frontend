@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { BusContext } from '../Context/BusContext';
-import { Autocomplete, TextField, Button } from '@mui/material';
+import { Autocomplete, TextField, Button, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -8,24 +8,33 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { BusesDetails, locations } from '../../Constants/Data';
 import { BusList } from './BusList';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   padding: 20px;
   background-color: #f5f5f5;
   min-height: 100vh;
-`;
 
+`;
 const StyledSearchContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  width: 100%; /* Full width to ensure centering */
+  max-width: 1200px; /* Maximum width to prevent excessive stretching on large screens */
+  margin: 0 auto; /* Center horizontally */
+  
+  @media (min-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const StyledButton = styled(Button)`
-  margin: 0 10px;
+  margin: 10px;
   padding: 10px;
   background-color: #1976d2;
   color: #fff;
@@ -48,6 +57,8 @@ const Buses = () => {
   const [selectedBus, setSelectedBus] = useState([]);
   const [error, setError] = useState('');
 
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleExchange = () => {
     setSearchDetails(prevDetails => ({
@@ -108,7 +119,7 @@ const Buses = () => {
           disablePortal
           id="combo-box-demo-from"
           options={locations}
-          sx={{ width: 300, marginRight: '10px' }}
+          sx={{ width: isSmallScreen ? '100%' : 300, marginRight: '10px' }}
           value={searchDetails.from}
           onChange={handleFromChange}
           renderInput={(params) => <TextField {...params} label="From" variant="outlined" />}
@@ -120,22 +131,20 @@ const Buses = () => {
           disablePortal
           id="combo-box-demo-to"
           options={locations}
-          sx={{ width: 300, marginLeft: '10px' }}
+          sx={{ width: isSmallScreen ? '100%' : 300, marginLeft: '10px' }}
           value={searchDetails.to}
           onChange={handleToChange}
           renderInput={(params) => <TextField {...params} label="To" variant="outlined" />}
         />
-        <div style={{marginLeft:"20px"}}>
-        <LocalizationProvider dateAdapter={AdapterDayjs} >
-          <DatePicker
-            value={searchDetails.date}
-            onChange={handleDateChange}
-            renderInput={(params) => <TextField {...params} label="Departure Date" variant="outlined" />}
-            disablePast
-            
-          />
-         
-        </LocalizationProvider>
+        <div style={{marginLeft:"20px", width: isSmallScreen ? '100%' : 'auto'}}>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker
+              value={searchDetails.date}
+              onChange={handleDateChange}
+              renderInput={(params) => <TextField {...params} label="Departure Date" variant="outlined" />}
+              disablePast
+            />
+          </LocalizationProvider>
         </div>
         <StyledButton
           variant="contained"
