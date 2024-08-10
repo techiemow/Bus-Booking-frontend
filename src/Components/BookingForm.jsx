@@ -185,6 +185,17 @@ const BookingForm = ({ selectedSeats, setSelectedSeats }) => {
               >
                 Book Now
               </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="error"
+                fullWidth
+                sx={{ marginTop: '20px' }}
+                disabled={isSubmitting}
+                onClick={()=>{navigate("/")}}
+              >
+                Cancel
+              </Button>
             </Grid>
           </Grid>
         </Form>

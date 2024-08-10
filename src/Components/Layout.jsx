@@ -9,8 +9,8 @@ import axios from 'axios';
 import { apiurl } from '../../Constants/apiurl';
 import HomeNavbar from './HomeNavbar';
 
-
-
+// Container for the seat selection page
+// Container for the seat selection page
 const Container = styled.div`
   background-color: #f0f0f0;
   border-radius: 5px;
@@ -21,42 +21,44 @@ const Container = styled.div`
   @media (max-width: 768px) {
     padding: 0.5rem;
   }
-`;const SeatContainer = styled.div`
-padding: 0.5rem;
-display: flex;
-flex-wrap: wrap;
-
-@media (max-width: 600px) {
-  justify-content: space-between;
-}
-
-@media (max-width: 400px) {
-  justify-content: space-around;
-}
 `;
 
+// Container for seat layout
+const SeatContainer = styled.div`
+  padding: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center seats horizontally */
+
+  @media (max-width: 600px) {
+    flex-direction: column; /* Stack seats vertically on smaller screens */
+    align-items: center; /* Center align vertically stacked seats */
+  }
+`;
+
+// Styling for individual seat
 const Seatlist = styled.li`
-list-style-type: none;
-margin: 0.5rem;
-padding: 1rem;
-border-radius: 8px;
-cursor: pointer;
-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-background-color: white;
+  list-style-type: none;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  font-size: 0.9rem;
 
-@media (max-width: 600px) {
-  width: 48%; /* Adjust the percentage to control the number of columns */
-}
+  @media (max-width: 600px) {
+    width: 80%; /* Adjust width to fit better in column layout */
+  }
 
-@media (max-width: 400px) {
-  width: 100%; /* Full width for smaller screens */
-}
+  @media (max-width: 400px) {
+    width: 90%; /* Further adjustment for very small screens */
+  }
 `;
-
 
 const Layout = ({ selectedSeats, setselectedSeats }) => {
   const navigate = useNavigate();

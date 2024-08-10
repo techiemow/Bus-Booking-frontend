@@ -25,8 +25,8 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeatsByDate: {},
-      bookedSeats: [19, 24, 30, 4, 16, 6],
+      amenities: ["Blankets", "Charging Points", "Water Bottles", "Personal TV", "Snacks"],
+
     },
     {
       id: 298728,
@@ -36,7 +36,7 @@ export const BusesDetails = [
       departureTime: "07:30 AM",
       arrivalTime: "02:00 PM",
       price: "550",
-    
+      amenities: ["Blankets", "Charging Points", "Water Bottles", "Personal TV", "Snacks"],
       busType: "Seater",
       numberOfSeats: 60,
       seatLayout: {
@@ -61,6 +61,7 @@ export const BusesDetails = [
       price: "700",
       busType: "Sleeper",
       numberOfSeats: 36,
+      amenities: ["Blankets", "Charging Points", "Water Bottles", "Snacks"],
       seatLayout: {
         lower: {
           first: [
@@ -87,6 +88,7 @@ export const BusesDetails = [
       arrivalTime: "05:30 PM",
       price: "850",
     
+      amenities: ["Blankets", "Charging Points", "Water Bottles", "Snacks"],
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -109,6 +111,7 @@ export const BusesDetails = [
       arrivalTime: "03:15 PM",
       price: "1999",
       
+      amenities: ["Blankets", "Charging Points", "Water Bottles", "Snacks"],
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -137,6 +140,7 @@ export const BusesDetails = [
       arrivalTime: "02:30 PM",
       price: "3500",
  
+      amenities: ["Blankets", "Charging Points"],
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -155,8 +159,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeats: [19, 24, 30, 4, 16, 6],
-      bookedSeatsByDate: {},
+
     },
     {
       id: 309862,
@@ -166,7 +169,7 @@ export const BusesDetails = [
       departureTime: "09:30 AM",
       arrivalTime: "04:00 PM",
       price: "550",
- 
+      amenities: ["Blankets", "Charging Points"],
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -179,8 +182,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeats: [4,28, 33,17,9,37],
-      bookedSeatsByDate: {},
+
     },
     {
       id: 331309,
@@ -190,7 +192,7 @@ export const BusesDetails = [
       departureTime: "11:15 AM",
       arrivalTime: "05:45 PM",
       price: "700",
-
+      amenities: ["Blankets", "Charging Points","personal TV"],
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -219,7 +221,7 @@ export const BusesDetails = [
       departureTime: "01:00 PM",
       arrivalTime: "07:30 PM",
       price: "2000",
-   
+      amenities: ["Blankets", "Charging Points"],
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -242,7 +244,7 @@ export const BusesDetails = [
       departureTime: "08:45 AM",
       arrivalTime: "03:15 PM",
       price: "5000",
- 
+      amenities: ["Blankets", "Charging Points","Water Bottles"],
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -261,8 +263,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeats:[19, 24, 30, 4, 16, 6],
-      bookedSeatsByDate: {},
+
     },
     {
       id: 41,
@@ -272,7 +273,7 @@ export const BusesDetails = [
       departureTime: "08:30 AM",
       arrivalTime: "03:00 PM",
       price: "4000",
-    
+      amenities: ["Blankets", "Charging Points"],
       busType: "Sleeper",
       numberOfSeats: 36,
       seatLayout: {
@@ -291,8 +292,6 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeats: [19, 24, 30, 4, 16, 6],
-      bookedSeatsByDate: {},
     },
     {
       id: 42,
@@ -302,7 +301,7 @@ export const BusesDetails = [
       departureTime: "10:00 AM",
       arrivalTime: "04:30 PM",
       price: "550",
-      
+      amenities: ["Blankets", "Charging Points"],
       busType: "Seater",
       numberOfSeats: 60,
       seatLayout: {
@@ -316,10 +315,7 @@ export const BusesDetails = [
           [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
         ],
       },
-      bookedSeats: [
-        46,33, 21,7,10,57,60
-      ],
-      bookedSeatsByDate: {},
+      amenities: ["Blankets", "Charging Points"],
     },
     {
       id: 43,
@@ -343,10 +339,7 @@ export const BusesDetails = [
           [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
         ],
       },
-      bookedSeats: [
-     46,33, 21,7,10,57,60
-      ],
-      bookedSeatsByDate: {},
+      amenities: ["Blankets", "Charging Points"],
     },
     {
       id: 44,
@@ -356,7 +349,7 @@ export const BusesDetails = [
       departureTime: "02:00 PM",
       arrivalTime: "07:30 PM",
       price: "1500",
-      
+      amenities: ["Blankets", "Charging Points"],
       busType: "Seater",
       numberOfSeats: 60,
       seatLayout: {
@@ -370,10 +363,7 @@ export const BusesDetails = [
           [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
         ],
       },
-      bookedSeats: [
-        46,33, 21,7,10,57,60
-      ],
-      bookedSeatsByDate: {},
+
     },
     {
       id: 45,
@@ -383,7 +373,7 @@ export const BusesDetails = [
       departureTime: "09:15 AM",
       arrivalTime: "03:45 PM",
       price: "580",
-
+      amenities: ["Blankets", "Charging Points"],
       busType: "Seater",
       numberOfSeats: 48,
       seatLayout: {
@@ -396,8 +386,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeats: [19, 24, 30, 4, 16, 6],
-      bookedSeatsByDate: {},
+
     },
     {
       id: 100009, // Random 6-digit number
@@ -419,7 +408,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeatsByDate: {},
+      amenities: ["Blankets", "Charging Points" , "AC"],
     },
     {
       id: 100010, // Random 6-digit number
@@ -441,7 +430,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeatsByDate: {},
+      amenities: ["Blankets", "Charging Points" , "AC"],
     },
     
     // Sleeper Buses
@@ -471,7 +460,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeatsByDate: {},
+      amenities: ["Blankets", "Charging Points" , "AC"],
     },
     {
       id: 100012, // Random 6-digit number
@@ -499,7 +488,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-
+      amenities: ["Blankets", "Charging Points" , "AC" ,"Pillows"],
     },
     {
       id: 200001, // Random 6-digit number
@@ -521,7 +510,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-
+      amenities: ["Charging Points" , "AC" ,"snacks"],
     },
     {
       id: 200002, // Random 6-digit number
@@ -543,7 +532,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-
+      amenities: ["Charging Points" , "AC" ,"snacks"],
     },
     
     // Sleeper Buses
@@ -573,7 +562,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-
+      amenities: ["Charging Points" , "AC" ,"snacks"],
     },
     {
       id: 200004, // Random 6-digit number
@@ -601,6 +590,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
+      amenities: ["Charging Points" , "AC" ,"snacks"],
     },
     {
       id: 300001, // Random 6-digit number
@@ -622,7 +612,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-
+      amenities: ["Charging Points" , "AC" ,"snacks"],
     },
     {
       id: 300002, // Random 6-digit number
@@ -644,7 +634,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-   
+      amenities: ["Charging Points" , "AC"  , "TV"],
     },
     
     // Sleeper Buses
@@ -674,7 +664,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-   
+      amenities: ["Charging Points" , "AC"  , "TV"],
     },
     {
       id: 300004, // Random 6-digit number
@@ -702,8 +692,10 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
- 
-    }, {
+      amenities: ["Charging Points" , "AC" ,"Water Bottles" , "TV"],
+    },
+    
+    {
       id: 310001,
       name: "Mumbai Express",
       source: "Coimbatore",
@@ -723,7 +715,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeatsByDate: {},
+      amenities: ["Charging Points" , "AC" ,"Water Bottles" , "TV"],
     },
     {
       id: 310002, 
@@ -745,7 +737,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeatsByDate: {},
+      amenities: ["Charging Points" , "AC" ,"Water Bottles" , "TV"],
     },
     
     // Sleeper Buses
@@ -775,7 +767,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeatsByDate: {},
+      amenities: ["AC" ,"Water Bottles" , "TV"],
     },
     {
       id: 310004, 
@@ -803,7 +795,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeatsByDate: {},
+      amenities: ["AC" ,"Water Bottles" , "Blankets"],
     }, 
     {
       id: 320001, // Random 6-digit number
@@ -825,7 +817,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeatsByDate: {},
+      amenities: ["AC" ,"Water Bottles" , "Blankets"],
     },
     {
       id: 320002, // Random 6-digit number
@@ -847,7 +839,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      bookedSeatsByDate: {},
+      amenities: ["AC" ,"Water Bottles" , "Blankets"],
     },
   
     // Sleeper Buses
@@ -877,7 +869,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      bookedSeatsByDate: {},
+      amenities: ["AC" ,"Water Bottles" , "Blankets"],
     },
     {
       id: 320004, // Random 6-digit number
@@ -905,8 +897,10 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-
-    }, {
+      amenities: ["AC" ,"Water Bottles" , "Blankets"],
+    }, 
+    
+    {
       id: 440001, 
       name: "MarineDrive Express",
       source: "Bangalore",
@@ -926,6 +920,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
+      amenities: ["AC" ,"Water Bottles" ,"TV","snacks"],
     },
     {
       id: 440002, // Random 6-digit number
@@ -947,7 +942,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-
+      amenities: ["AC" ,"Water Bottles" ,"TV","snacks"],
     },
   
     // Sleeper Buses
@@ -977,7 +972,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-
+      amenities: ["AC" ,"Water Bottles" ,"TV","snacks","Charging points"],
     },
     {
       id: 440004, // Random 6-digit number
@@ -1005,7 +1000,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-
+      amenities: ["AC" ,"Water Bottles" ,"TV","snacks","Charging points"],
     },
     {
       id: 550001, // Random 6-digit number
@@ -1027,6 +1022,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
+      amenities: ["AC" ,"Water Bottles" ,"TV","snacks","Charging points"],
     },
     {
       id: 550002, // Random 6-digit number
@@ -1077,6 +1073,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
+      amenities: ["AC" ,"Water Bottles" ,"TV","snacks","Charging points"],
     },
     {
       id: 550004, // Random 6-digit number
@@ -1104,6 +1101,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
+      amenities: ["AC" ,"Water Bottles" ,"TV","snacks","Charging points"],
     },
     {
       id: 660001, // Random 6-digit number
@@ -1125,7 +1123,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      features: ["Water", "Wi-Fi", "Charging Points"],
+      amenities: ["Water", "Wi-Fi", "Charging Points"],
     },
     
     // AC Seater Bus 2
@@ -1149,7 +1147,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      features: [ "Wi-Fi", "Charging Points"],
+      amenities: [ "Wi-Fi", "Charging Points"],
     },
     
     // AC Sleeper Bus 1
@@ -1179,7 +1177,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      features: [ "Blankets", "Charging Points"],
+      amenities: [ "Blankets", "Charging Points"],
     },
     
     // AC Sleeper Bus 2
@@ -1209,7 +1207,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      features: [ "Blankets", "Charging Points"],
+      amenities: [ "Blankets", "Charging Points"],
     },
     {
       id: 670001, // Random 6-digit number
@@ -1231,7 +1229,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      features: ["Wi-Fi", "Charging Points"],
+      amenities: ["Wi-Fi", "Charging Points"],
     },
     
     // AC Seater Bus 2
@@ -1255,7 +1253,7 @@ export const BusesDetails = [
           [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
         ],
       },
-      features: ["AC", "Wi-Fi", "Charging Points"],
+      amenities: ["AC", "Wi-Fi", "Charging Points"],
     },
     
     // AC Sleeper Bus 1
@@ -1285,7 +1283,7 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      features: ["Blankets", "Charging Points"],
+      amenities: ["Blankets", "Charging Points"],
     },
     
     // AC Sleeper Bus 2
@@ -1315,8 +1313,545 @@ export const BusesDetails = [
           second: [31, 32, 33, 34, 35, 36],
         },
       },
-      features: [ "Blankets", "Charging Points"],
+      amenities: [ "Blankets", "Charging Points"],
     },
+    // AC Seater Bus 1
+{
+  id: 670001, // Random 6-digit number
+  name: "DHM Travels",
+  source: "Mumbai",
+  destination: "Coimbatore",
+  departureTime: "07:00 AM",
+  arrivalTime: "11:00 PM",
+  price: "1800",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["Wi-Fi", "Charging Points"],
+},
+
+// AC Seater Bus 2
+{
+  id: 670002, // Random 6-digit number
+  name: "FAST TRAVELS",
+  source: "Mumbai",
+  destination: "Coimbatore",
+  departureTime: "08:00 AM",
+  arrivalTime: "12:00 AM",
+  price: "1900",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["AC", "Wi-Fi", "Charging Points"],
+},
+
+// AC Sleeper Bus 1
+{
+  id: 670003, // Random 6-digit number
+  name: "EXPRESS Travels",
+  source: "Mumbai",
+  destination: "Coimbatore",
+  departureTime: "10:00 PM",
+  arrivalTime: "06:00 AM",
+  price: "2800",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points"],
+},
+
+// AC Sleeper Bus 2
+{
+  id: 670004, // Random 6-digit number
+  name: "Coimbatore Express",
+  source: "Mumbai",
+  destination: "Coimbatore",
+  departureTime: "11:00 PM",
+  arrivalTime: "07:00 AM",
+  price: "2900",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points"],
+},
+// AC Seater Bus 1
+{
+  id: 670001, // Random 6-digit number
+  name: "DELHI EXPRESS",
+  source: "Mumbai",
+  destination: "Delhi",
+  departureTime: "07:00 AM",
+  arrivalTime: "11:00 PM",
+  price: "1800",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["Wi-Fi", "Charging Points"],
+},
+
+// AC Seater Bus 2
+{
+  id: 670002, // Random 6-digit number
+  name: "METRO TRAVELS",
+  source: "Mumbai",
+  destination: "Delhi",
+  departureTime: "08:00 AM",
+  arrivalTime: "12:00 AM",
+  price: "1900",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["AC", "Wi-Fi", "Charging Points"],
+},
+
+// AC Sleeper Bus 1
+{
+  id: 670003, // Random 6-digit number
+  name: "CAPITAL TRAVELS",
+  source: "Mumbai",
+  destination: "Delhi",
+  departureTime: "10:00 PM",
+  arrivalTime: "06:00 AM",
+  price: "2800",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points"],
+},
+
+// AC Sleeper Bus 2
+{
+  id: 670004, // Random 6-digit number
+  name: "DELHI COMFORT",
+  source: "Mumbai",
+  destination: "Delhi",
+  departureTime: "11:00 PM",
+  arrivalTime: "07:00 AM",
+  price: "2900",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points"],
+},
+// AC Seater Bus 1
+{
+  id: 670005, // Random 6-digit number
+  name: "SOUTHERN EXPRESS",
+  source: "Delhi",
+  destination: "Coimbatore",
+  departureTime: "06:00 AM",
+  arrivalTime: "10:00 PM",
+  price: "3500",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["Wi-Fi", "Charging Points", "Water Bottles"],
+},
+
+// AC Seater Bus 2
+{
+  id: 670006, // Random 6-digit number
+  name: "COIMBATORE EXPRESS",
+  source: "Delhi",
+  destination: "Coimbatore",
+  departureTime: "07:00 AM",
+  arrivalTime: "11:00 PM",
+  price: "3600",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["AC", "Wi-Fi", "Charging Points", "Snacks", "Water Bottles"],
+},
+
+// AC Sleeper Bus 1
+{
+  id: 670007, // Random 6-digit number
+  name: "CAPITAL SLEEPER",
+  source: "Delhi",
+  destination: "Coimbatore",
+  departureTime: "08:00 PM",
+  arrivalTime: "06:00 AM",
+  price: "4000",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points", "Water Bottles"],
+},
+
+// AC Sleeper Bus 2
+{
+  id: 670008, // Random 6-digit number
+  name: "DELHI DREAMLINER",
+  source: "Delhi",
+  destination: "Coimbatore",
+  departureTime: "09:00 PM",
+  arrivalTime: "07:00 AM",
+  price: "4200",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points", "Water Bottles", "Personal TV"],
+},
+// AC Seater Bus 1
+{
+  id: 670009, // Random 6-digit number
+  name: "BANGALORE EXPRESS",
+  source: "Delhi",
+  destination: "Bangalore",
+  departureTime: "05:00 AM",
+  arrivalTime: "09:00 PM",
+  price: "3400",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["Wi-Fi", "Charging Points", "Water Bottles"],
+},
+
+// AC Seater Bus 2
+{
+  id: 670010, // Random 6-digit number
+  name: "KARNATAKA CONNECT",
+  source: "Delhi",
+  destination: "Bangalore",
+  departureTime: "06:30 AM",
+  arrivalTime: "10:30 PM",
+  price: "3500",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["AC", "Wi-Fi", "Charging Points", "Snacks", "Water Bottles"],
+},
+
+// AC Sleeper Bus 1
+{
+  id: 670011, // Random 6-digit number
+  name: "SOUTHERN SLEEPER",
+  source: "Delhi",
+  destination: "Bangalore",
+  departureTime: "08:30 PM",
+  arrivalTime: "06:30 AM",
+  price: "3900",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points", "Water Bottles"],
+},
+
+// AC Sleeper Bus 2
+{
+  id: 670012, // Random 6-digit number
+  name: "CAPITAL SLEEPER",
+  source: "Delhi",
+  destination: "Bangalore",
+  departureTime: "09:00 PM",
+  arrivalTime: "07:00 AM",
+  price: "4000",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points", "Water Bottles", "Personal TV"],
+},
+// AC Seater Bus 1
+{
+  id: 670013, // Random 6-digit number
+  name: "MUMBAI EXPRESS",
+  source: "Delhi",
+  destination: "Mumbai",
+  departureTime: "06:00 AM",
+  arrivalTime: "10:00 PM",
+  price: "3600",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["Wi-Fi", "Charging Points", "Water Bottles", "Snacks"],
+},
+
+// AC Seater Bus 2
+{
+  id: 670014, // Random 6-digit number
+  name: "BOMBAY CONNECT",
+  source: "Delhi",
+  destination: "Mumbai",
+  departureTime: "07:00 AM",
+  arrivalTime: "11:00 PM",
+  price: "3700",
+  busType: "Seater",
+  numberOfSeats: 48,
+  seatLayout: {
+    first: [
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+    ],
+    second: [
+      [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36],
+      [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48],
+    ],
+  },
+  amenities: ["AC", "Wi-Fi", "Charging Points", "Water Bottles", "Entertainment"],
+},
+
+// AC Sleeper Bus 1
+{
+  id: 670015, // Random 6-digit number
+  name: "MAHARASHTRA SLEEPER",
+  source: "Delhi",
+  destination: "Mumbai",
+  departureTime: "09:00 PM",
+  arrivalTime: "07:00 AM",
+  price: "4200",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points", "Water Bottles", "Reading Lights"],
+},
+
+// AC Sleeper Bus 2
+{
+  id: 670016, // Random 6-digit number
+  name: "CAPITAL SLEEPER",
+  source: "Delhi",
+  destination: "Mumbai",
+  departureTime: "10:00 PM",
+  arrivalTime: "08:00 AM",
+  price: "4300",
+  busType: "Sleeper",
+  numberOfSeats: 36,
+  seatLayout: {
+    lower: {
+      first: [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 10, 11, 12],
+      ],
+      second: [13, 14, 15, 16, 17, 18],
+    },
+    upper: {
+      first: [
+        [19, 20, 21, 22, 23, 24],
+        [25, 26, 27, 28, 29, 30],
+      ],
+      second: [31, 32, 33, 34, 35, 36],
+    },
+  },
+  amenities: ["Blankets", "Charging Points", "Water Bottles", "Personal TV", "Snacks"],
+},
+
+
   ];
   export const locations = [
     "Chennai",
