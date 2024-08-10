@@ -195,7 +195,7 @@ const MyBookings = () => {
                 <StyledTableCell>Seat Numbers</StyledTableCell>
                 <StyledTableCell>Total Price</StyledTableCell>
                 <StyledTableCell>Date</StyledTableCell>
-                <StyledTableCell>Delete</StyledTableCell>
+                <StyledTableCell>Cancel</StyledTableCell>
                 <StyledTableCell>Payment</StyledTableCell>
               </TableRow>
             </StyledTableHead>
