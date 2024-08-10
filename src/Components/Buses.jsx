@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { BusContext } from '../Context/BusContext';
-import { Autocomplete, TextField, Button, Grid, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Autocomplete, TextField, Button, useMediaQuery, useTheme } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -14,18 +14,18 @@ const StyledContainer = styled.div`
   padding: 20px;
   background-color: #f5f5f5;
   min-height: 100vh;
-
 `;
+
 const StyledSearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  width: 100%; /* Full width to ensure centering */
-  max-width: 1200px; /* Maximum width to prevent excessive stretching on large screens */
-  margin: 0 auto; /* Center horizontally */
-  
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
   @media (min-width: 600px) {
     flex-direction: row;
     align-items: center;
@@ -33,12 +33,44 @@ const StyledSearchContainer = styled.div`
   }
 `;
 
+const StyledAutocomplete = styled(Autocomplete)`
+  margin: 10px 0;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    margin: 0 10px;
+    width: 300px;
+  }
+`;
+
+const StyledDatePickerContainer = styled.div`
+  margin: 10px 0;
+  width: 100%;
+
+  @media (min-width: 600px) {
+    margin-left: 20px;
+    width: auto;
+  }
+`;
+
+const StyledButtonContainer = styled.div`
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  @media (min-width: 600px) {
+    margin-left: 20px;
+    width: auto;
+  }
+`;
+
 const StyledButton = styled(Button)`
-  margin: 10px;
   padding: 10px;
   background-color: #1976d2;
   color: #fff;
   border-radius: 4px;
+
   &:hover {
     background-color: #1565c0;
   }
@@ -61,7 +93,7 @@ const Buses = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleExchange = () => {
-    setSearchDetails(prevDetails => ({
+    setSearchDetails((prevDetails) => ({
       ...prevDetails,
       from: searchDetails.to,
       to: searchDetails.from,
@@ -73,7 +105,7 @@ const Buses = () => {
       setError('From and To locations cannot be the same.');
     } else {
       setError('');
-      setSearchDetails(prevDetails => ({ ...prevDetails, from: newValue }));
+      setSearchDetails((prevDetails) => ({ ...prevDetails, from: newValue }));
     }
   };
 
@@ -82,20 +114,16 @@ const Buses = () => {
       setError('From and To locations cannot be the same.');
     } else {
       setError('');
-      setSearchDetails(prevDetails => ({ ...prevDetails, to: newValue }));
+      setSearchDetails((prevDetails) => ({ ...prevDetails, to: newValue }));
     }
   };
 
   const handleDateChange = (newValue) => {
-    setSearchDetails(prevDetails => ({ ...prevDetails, date: newValue }));
+    setSearchDetails((prevDetails) => ({ ...prevDetails, date: newValue }));
   };
 
   useEffect(() => {
-    console.log('Search Details:', searchDetails);
-  }, [searchDetails]);
-
-  useEffect(() => {
-    setSearchDetails(prevDetails => ({ ...prevDetails, date: null }));
+    setSearchDetails((prevDetails) => ({ ...prevDetails, date: null }));
   }, []);
 
   const handleSearch = () => {
@@ -108,35 +136,35 @@ const Buses = () => {
         )
       );
     } else {
-      console.error('Please fill all search details.');
+      setError('Please fill all search details.');
     }
   };
 
   return (
     <StyledContainer>
       <StyledSearchContainer>
-        <Autocomplete
+        <StyledAutocomplete
           disablePortal
           id="combo-box-demo-from"
           options={locations}
-          sx={{ width: isSmallScreen ? '100%' : 300, marginRight: '10px' }}
           value={searchDetails.from}
           onChange={handleFromChange}
           renderInput={(params) => <TextField {...params} label="From" variant="outlined" />}
         />
-        <StyledButton onClick={handleExchange} variant='contained'>
-          <i className="fa-solid fa-arrow-right-arrow-left"></i>
-        </StyledButton>
-        <Autocomplete
+        <StyledButtonContainer>
+          <StyledButton onClick={handleExchange} variant="contained">
+            <i className="fa-solid fa-arrow-right-arrow-left"></i>
+          </StyledButton>
+        </StyledButtonContainer>
+        <StyledAutocomplete
           disablePortal
           id="combo-box-demo-to"
           options={locations}
-          sx={{ width: isSmallScreen ? '100%' : 300, marginLeft: '10px' }}
           value={searchDetails.to}
           onChange={handleToChange}
           renderInput={(params) => <TextField {...params} label="To" variant="outlined" />}
         />
-        <div style={{marginLeft:"20px", width: isSmallScreen ? '100%' : 'auto'}}>
+        <StyledDatePickerContainer>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               value={searchDetails.date}
@@ -145,16 +173,17 @@ const Buses = () => {
               disablePast
             />
           </LocalizationProvider>
-        </div>
-        <StyledButton
-          variant="contained"
-          onClick={handleSearch}
-          endIcon={<SendIcon />}
-          disabled={!!error}
-          style={{marginLeft:"20px"}}
-        >
-          Search
-        </StyledButton>
+        </StyledDatePickerContainer>
+        <StyledButtonContainer>
+          <StyledButton
+            variant="contained"
+            onClick={handleSearch}
+            endIcon={<SendIcon />}
+            disabled={!!error}
+          >
+            Search
+          </StyledButton>
+        </StyledButtonContainer>
       </StyledSearchContainer>
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

@@ -9,45 +9,54 @@ import axios from 'axios';
 import { apiurl } from '../../Constants/apiurl';
 import HomeNavbar from './HomeNavbar';
 
-const Header = styled.h1`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  height: 100px;
-  margin-bottom: 10px;
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-`;
+
 
 const Container = styled.div`
   background-color: #f0f0f0;
   border-radius: 5px;
   padding: 1rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-`;
+  max-width: 100%;
+  
+  @media (max-width: 768px) {
+    padding: 0.5rem;
+  }
+`;const SeatContainer = styled.div`
+padding: 0.5rem;
+display: flex;
+flex-wrap: wrap;
 
-const SeatContainer = styled.div`
-  padding: 0.5rem;
+@media (max-width: 600px) {
+  justify-content: space-between;
+}
+
+@media (max-width: 400px) {
+  justify-content: space-around;
+}
 `;
 
 const Seatlist = styled.li`
-  list-style-type: none;
-  margin: 0.5rem;
-  padding: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: white;
+list-style-type: none;
+margin: 0.5rem;
+padding: 1rem;
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+background-color: white;
+
+@media (max-width: 600px) {
+  width: 48%; /* Adjust the percentage to control the number of columns */
+}
+
+@media (max-width: 400px) {
+  width: 100%; /* Full width for smaller screens */
+}
 `;
+
 
 const Layout = ({ selectedSeats, setselectedSeats }) => {
   const navigate = useNavigate();
@@ -230,7 +239,7 @@ const Layout = ({ selectedSeats, setselectedSeats }) => {
             onClick={() => navigate(`/Layout/Booking/${id}`)} 
             disabled={selectedSeats.length === 0}
           >
-            Book Now
+            PROCEED
           </Button>
         </div>
       </Container>
